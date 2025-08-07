@@ -1,19 +1,41 @@
+import { Outlet, useNavigate } from "react-router-dom";
 
 
 
 
 const Dashboard = ()=>{
     
-
-    return(
-        <>
+    const navigate =useNavigate();
+    return (
+      <>
         <div>Cirrusview</div>
-        <div><button>Set Windows</button></div>
-        <div><button>View Window status</button></div>
-        <div><button>Log Laundry</button></div>
-        <div><button>Sign up</button></div>
-        </>
-    )
+        <div>
+          <span>
+            <button>Set Windows</button>
+          </span>
+          <span>
+            <button>View Window status</button>
+          </span>
+          <span>
+            <button>Log Laundry</button>
+          </span>
+          <span>
+            <button
+              onClick={() => {
+                navigate("/signup");
+              }}
+            >
+              Sign up
+            </button>
+          </span>
+        </div>
+        <div className="outletContainer">
+              <Outlet />
+        </div>
+
+        
+      </>
+    );
 }
 
 export default Dashboard;
