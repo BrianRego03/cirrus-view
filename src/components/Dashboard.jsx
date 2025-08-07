@@ -28,6 +28,15 @@ const Dashboard = ()=>{
               Sign up
             </button>
           </span>
+          <span>
+            <button
+              onClick={() => {
+                navigate("/logout");
+              }}
+            >
+              Log out
+            </button>
+          </span>
         </div>
         <div className="outletContainer">
               <Outlet />
