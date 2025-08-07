@@ -1,0 +1,97 @@
+🔹 3. Use Auth in Any Component
+
+import { useAuth } from "../context/AuthContext";
+
+const Dashboard = () => {
+  const { user, loading } = useAuth();
+
+  if (loading) return <div>Loading...</div>;
+  if (!user) return <Navigate to="/login" />;
+
+  return <div>Welcome, {user.username}</div>;
+};
+
+✅ Now you don't need to fetch /userState in every route — you already know the login state and user info globally.
+
+
+
+🔹 4. Handle Login / Logout Actions
+When login succeeds:
+
+// After successful login
+const res = await fetch("/login", { method: "POST", ... });
+
+if (res.ok) {
+  const user = await fetch("/userState", { credentials: "include" }).then(r => r.json());
+  setUser(user); // update AuthContext from useAuth()
+}
+
+On logout:
+
+await fetch("/logout", { method: "POST", credentials: "include" });
+setUser(null); // instantly reflect logout in UI
+
+
+
+✅ Option 1: Just wait for next API call to fail (recommended, simple)
+
+Let your app rely on protected API calls.
+
+    User tries to load /weather → calls /weatherData
+
+    If backend returns 401 → you catch it, clear auth, redirect to /login
+
+const res = await fetch("/weatherData", { credentials: "include" });
+if (res.status === 401) {
+  setUser(null); // 🔁 clear context
+  navigate("/login");
+}
+
+    ✅ This is simple, clean, and used in many SPAs.
+    You don't care about when the token expires, just if it's valid during the API call.
+
+✅ Option 2: Periodic token validity check
+
+If you want to proactively check if the session is still valid every X minutes:
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    fetch("/userState", { credentials: "include" })
+      .then(res => {
+        if (!res.ok) throw new Error();
+        return res.json();
+      })
+      .then(data => setUser(data))
+      .catch(() => {
+        setUser(null);
+        navigate("/login");
+      });
+  }, 5 * 60 * 1000); // Every 5 minutes
+
+  return () => clearInterval(interval);
+}, []);
+
+    🔁 This revalidates the token periodically
+    ✅ Still only 1 API call every few minutes
+    🔐 Useful for banking apps, admin panels, etc.
+
+✅ Option 3: Use JWT expiry timestamp (advanced)
+
+If your backend includes expiry in the userState response:
+
+{
+  "username": "brian",
+  "exp": 1699999999
+}
+
+Then on frontend:
+
+useEffect(() => {
+  if (user?.exp) {
+    const now = Date.now() / 1000;
+    if (now > user.exp) {
+      setUser(null);
+      navigate("/login");
+    }
+  }
+}, [user]);
