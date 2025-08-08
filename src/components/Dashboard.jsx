@@ -1,10 +1,10 @@
 import { Outlet, useNavigate } from "react-router-dom";
-
+import { useAuth } from "./AuthContext";
 
 
 
 const Dashboard = ()=>{
-    
+    const {user}= useAuth();
     const navigate =useNavigate();
     return (
       <>
@@ -19,30 +19,46 @@ const Dashboard = ()=>{
           <span>
             <button>Log Laundry</button>
           </span>
-          <span>
-            <button
-              onClick={() => {
-                navigate("/signup");
-              }}
-            >
-              Sign up
-            </button>
-          </span>
-          <span>
-            <button
-              onClick={() => {
-                navigate("/logout");
-              }}
-            >
-              Log out
-            </button>
-          </span>
-        </div>
-        <div className="outletContainer">
-              <Outlet />
+          {!user && (
+            <>
+              <span>
+                <button
+                  onClick={() => {
+                    navigate("/signup");
+                  }}
+                >
+                  Sign up
+                </button>
+              </span>
+              <span>
+                <button
+                  onClick={() => {
+                    navigate("/login");
+                  }}
+                >
+                  Log in
+                </button>
+              </span>
+            </>
+          )}
+          {user && (
+            <>
+              <span>
+                <button
+                  onClick={() => {
+                    navigate("/logout");
+                  }}
+                >
+                  Log out
+                </button>
+              </span>
+            </>
+          )}
         </div>
 
-        
+        <div className="outletContainer">
+          <Outlet />
+        </div>
       </>
     );
 }
