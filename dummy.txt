@@ -95,3 +95,8 @@ useEffect(() => {
     }
   }
 }, [user]);
+
+  const isoTime = new Date(`${date}T${time}:00`).toISOString();
+  
+
+<input type="text" inputmode="numeric">
