@@ -35,6 +35,7 @@ const SignUp=()=>{
 
             if (res.ok) {
                 alert("User registered successfully!");
+                navigate("/login")
             } else {
                 alert(`Error: ${data.message || "Something went wrong"}`);
             }
