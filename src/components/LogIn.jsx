@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
 
 
 const LogIn=()=>{
+    const {setUser}= useAuth();
+
 
     const [formData,setFormData] = useState({username:"",password:""});
 
@@ -31,10 +34,14 @@ const LogIn=()=>{
             });
 
             const data = await res.json();
-            console.log(res);
+            // console.log(data);
 
             if (res.ok) {
-                alert("Logged in successfully!");
+                // alert("Logged in successfully!");
+                const res = await fetch("http://localhost:3000/userState", { credentials: "include" });
+                const data = await res.json();
+                setUser(data.loggedIn ? data.user : null);
+                navigate("/");
             } else {
                 alert(`Error: ${data.message || "Something went wrong"}`);
             }
