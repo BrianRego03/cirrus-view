@@ -28,7 +28,7 @@ const LogOut=()=>{
                 if (res.ok) {
                     // alert("Logged in successfully!");
                     setUser(null);
-                    navigate("/login");
+                    navigate("/");
                 } else {
                     alert(`Error: ${data.message || "Something went wrong"}`);
                 }

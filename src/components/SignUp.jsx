@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
 const SignUp=()=>{
 
     const [formData,setFormData] = useState({username:"",password:""});
+
+    const navigate=useNavigate();
 
     const handleChange = (e) => {
         setFormData((prev) => ({
@@ -47,6 +50,17 @@ const SignUp=()=>{
 
     return (
       <>
+        <div>
+          <span>
+            <button
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Dashboard
+            </button>
+          </span>
+        </div>
         <form onSubmit={handleSubmit}>
           <div>Sign up</div>
           <div>Enter username</div>

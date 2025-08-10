@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
 const LogIn=()=>{
 
     const [formData,setFormData] = useState({username:"",password:""});
+
+    const navigate=useNavigate();
 
     const handleChange = (e) => {
         setFormData((prev) => ({
@@ -47,12 +50,33 @@ const LogIn=()=>{
 
     return (
       <>
+        <div>
+          <span>
+            <button
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Dashboard
+            </button>
+          </span>
+        </div>
         <form onSubmit={handleSubmit}>
           <div>Log In</div>
           <div>Enter username</div>
-          <input type="text" name="username" value={formData.username} onChange={handleChange}></input>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+          ></input>
           <div>Enter password</div>
-          <input type="text" name="password" value={formData.password} onChange={handleChange}></input>
+          <input
+            type="text"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          ></input>
           <button type="submit">Submit</button>
         </form>
       </>
