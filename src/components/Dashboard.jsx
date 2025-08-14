@@ -9,13 +9,30 @@ const Dashboard = ()=>{
     return (
       <>
         <div>Cirrusview</div>
-        <div>{user?.user?`Hi ${user.user.username}`:"You are not logged in"}</div>
+        <div>
+          {user?.user ? `Hi ${user.user.username}` : "You are not logged in"}
+        </div>
         <div>
           <span>
-            <button>Set Windows</button>
+            <button
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Dashboard
+            </button>
           </span>
           <span>
-            <button>View Window status</button>
+            <button>Set Laundry</button>
+          </span>
+          <span>
+            <button
+              onClick={() => {
+                navigate("/laundry");
+              }}
+            >
+              View Laundry
+            </button>
           </span>
           <span>
             <button>Log Laundry</button>

@@ -50,3 +50,29 @@
 .outletContainer{
   margin-top: 60px;
 }
+
+.laundryCard{
+  width: 60%;
+  height:80px;
+  border: 1px solid blue;
+  margin-top: 20px;
+  font-size: 20px;
+  padding: 5px;
+  
+}
+
+.laundryCard div{
+  text-align: left;
+}
+
+.laundryCard:hover{
+  background-color: blue;
+  color: white;
+}
+
+.laundryBasket{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
