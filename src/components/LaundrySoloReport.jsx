@@ -64,18 +64,15 @@ const LaundrySoloReport = ()=>{
         <div className="laundryBasket">
           {loadingLaundryReport ? (
             <>
+              <div>Laundry Name : {loadingLaundryReport.laundry.name}</div>
               <div>Location : {loadingLaundryReport.location}</div>
               <div>Forecast for this week : </div>
               <div>{loadingLaundryReport.description}</div>
-              
-
             </>
           ) : (
             <></>
           )}
         </div>
-
-        
 
         {/* <div
           className="laundryBasket"
