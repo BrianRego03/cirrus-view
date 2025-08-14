@@ -4,9 +4,9 @@ import { useCallback, useEffect, useState } from "react";
 
 
 
-const LaundrySolo = ()=>{
+const LaundrySoloReport = ()=>{
     // const {user}= useAuth();
-    const [loadingLaundrySolo,setLaundrySolo]=useState(null);
+    const [loadingLaundryReport,setLaundryReport]=useState(null);
     const navigate = useNavigate();
     const {id:lid}= useParams();
 
@@ -30,11 +30,11 @@ const LaundrySolo = ()=>{
         return stringOfTime;
     }
 
-    const fetchLaundrySolo= useCallback(() => {
+    const fetchLaundrySoloReport= useCallback(() => {
           (async () => {
             try {
               const res = await fetch(
-                `http://localhost:3000/laundry/${lid}`,
+                `http://localhost:3000/laundryReport/${lid}`,
                 {
                   credentials: "include",
                 }
@@ -42,7 +42,7 @@ const LaundrySolo = ()=>{
 
               const data = await res.json();
               console.log(data);
-              setLaundrySolo(data);
+              setLaundryReport(data);
 
             } catch (err) {
               console.error(err);
@@ -52,8 +52,8 @@ const LaundrySolo = ()=>{
         },[lid]);
 
     useEffect(()=>{
-        fetchLaundrySolo();
-    },[fetchLaundrySolo])
+        fetchLaundrySoloReport();
+    },[fetchLaundrySoloReport])
 
 
 
@@ -62,12 +62,13 @@ const LaundrySolo = ()=>{
     return (
       <>
         <div className="laundryBasket">
-          {loadingLaundrySolo ? (
+          {loadingLaundryReport ? (
             <>
-              <div>Laundry Name : {loadingLaundrySolo.name}</div>
-              <div>Location : {loadingLaundrySolo.location}</div>
-              <div className="laundryCard" onClick={()=>{navigate(`/laundry/${lid}/report`)}}>
-                Weather Report</div>
+              <div>Location : {loadingLaundryReport.location}</div>
+              <div>Forecast for this week : </div>
+              <div>{loadingLaundryReport.description}</div>
+              
+
             </>
           ) : (
             <></>
@@ -76,7 +77,7 @@ const LaundrySolo = ()=>{
 
         
 
-        <div
+        {/* <div
           className="laundryBasket"
           onClick={() => {
             navigate("/");
@@ -107,9 +108,9 @@ const LaundrySolo = ()=>{
           ) : (
             <></>
           )}
-        </div>
+        </div> */}
       </>
     );
 }
 
-export default LaundrySolo;
+export default LaundrySoloReport;
