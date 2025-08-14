@@ -61,35 +61,53 @@ const LaundrySolo = ()=>{
 
     return (
       <>
-
-        <div className="laundryBasket" onClick={()=>{navigate("/")}}>
-            {(loadingLaundrySolo?.windows)?
-                loadingLaundrySolo.windows.map((item,index)=>{
-                    return (
-                      <div key={item.id} className="laundryCard">
-                        <div>
-                          {index +
-                            1 +
-                            ") " +
-                            item.startWindowDay +
-                            " " +
-                            timeFormatter(
-                              item.startWindowHour,
-                              item.startWindowMin,
-                              item.endWindowHour,
-                              item.endWindowMin
-                            )}
-                        </div>
-
-                        <div>{item.location}</div>
-                      </div>
-                    );
-                })
-
-                :<></>}
- 
+        <div className="laundryBasket">
+          {loadingLaundrySolo ? (
+            <>
+              <div>Laundry Name : {loadingLaundrySolo.name}</div>
+              <div>Location : {loadingLaundrySolo.location}</div>
+              <div className="laundryCard" onClick={()=>{navigate("/")}}>
+                Weather Report</div>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
 
+        
+
+        <div
+          className="laundryBasket"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          {loadingLaundrySolo?.windows ? (
+            loadingLaundrySolo.windows.map((item, index) => {
+              return (
+                <div key={item.id} className="laundryCard">
+                  <div>
+                    {index +
+                      1 +
+                      ") " +
+                      item.startWindowDay +
+                      " " +
+                      timeFormatter(
+                        item.startWindowHour,
+                        item.startWindowMin,
+                        item.endWindowHour,
+                        item.endWindowMin
+                      )}
+                  </div>
+
+                  <div>{item.location}</div>
+                </div>
+              );
+            })
+          ) : (
+            <></>
+          )}
+        </div>
       </>
     );
 }
