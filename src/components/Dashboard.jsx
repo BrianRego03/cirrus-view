@@ -9,6 +9,7 @@ const Dashboard = ()=>{
     return (
       <>
         <div>Cirrusview</div>
+        <div>{user?.user?`Hi ${user.user.username}`:"You are not logged in"}</div>
         <div>
           <span>
             <button>Set Windows</button>

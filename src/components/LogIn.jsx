@@ -38,9 +38,9 @@ const LogIn=()=>{
 
             if (res.ok) {
                 // alert("Logged in successfully!");
-                const res = await fetch("http://localhost:3000/userState", { credentials: "include" });
-                const data = await res.json();
-                setUser(data.loggedIn ? data.user : null);
+                // const res = await fetch("http://localhost:3000/userState", { credentials: "include" });
+                // const data = await res.json();
+                setUser(data);
                 navigate("/");
             } else {
                 alert(`Error: ${data.message || "Something went wrong"}`);
