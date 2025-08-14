@@ -13,7 +13,7 @@ export const AuthProvider = ({children})=>{
           try {
             const res = await fetch("http://localhost:3000/userState", { credentials: "include" });
             const data = await res.json();
-            setUser(data.loggedIn ? data.user : null);
+            setUser(data.loggedIn ? data : null);
           } catch {
             setUser(null);
           } finally {
