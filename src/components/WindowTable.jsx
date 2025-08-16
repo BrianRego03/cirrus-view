@@ -40,12 +40,12 @@ const WindowTable=({windowObject})=>{
                         return(
                         
                         <div className="windowFrame" key={windowIndex} >
-                            <div className="frameDivSticky">{dayProvider(windowItem.date)}</div>
+                            <div className="frameDivSticky"><b>{dayProvider(windowItem.date)}</b></div>
                             <table className="windowTable">
                             <thead>
 
                                 <tr>
-                                    <th className="frameSticky">{windowItem.startWindowDay}</th>
+                                    <th className="frameSticky">Time</th>
                                     {windowItem.windowHours.map((item,index)=>{
                                         return (
                                             <th key={index}>{timeFormatter(item.hour,item.minute)}</th>
