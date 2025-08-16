@@ -108,6 +108,7 @@
   opacity: 1;
   background-color: white;
   box-shadow: 0 2px 0 0 #797979;
+  z-index: 2;
   border-left: none;
 }
 
@@ -125,7 +126,6 @@
 .rainCell{
   background-color: rgb(255, 185, 185);
   border: 1px solid #F19999;
-  /* color:#7A0C0C; */
 }
 
 .purpleCell{
@@ -135,7 +135,7 @@
   background-color: rgb(250,250,255);
 }
 .windowColumn{
-  background-color: #4F46E5;
+  background-color: #242083;
   color: #FFFFFF;
 }
 .windowRow{
