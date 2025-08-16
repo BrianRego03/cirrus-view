@@ -45,10 +45,10 @@ const WindowTable=({windowObject})=>{
                             <thead>
 
                                 <tr>
-                                    <th className="frameSticky">Time</th>
+                                    <th className="frameSticky windowColumn">Time</th>
                                     {windowItem.windowHours.map((item,index)=>{
                                         return (
-                                            <th key={index}>{timeFormatter(item.hour,item.minute)}</th>
+                                            <th key={index} className="windowColumn">{timeFormatter(item.hour,item.minute)}</th>
                                         )
                                     })}
                                 </tr>
@@ -57,10 +57,11 @@ const WindowTable=({windowObject})=>{
                             <tbody>
 
                                 <tr>
-                                    <th className="frameSticky" >Rain</th>
+                                    <th className="frameSticky windowRow" >Rain</th>
                                     {windowItem.windowHours.map((item,index)=>{
                                         return (
-                                            <td key={index} className={item.rain?"rainCell":""}>
+                                            <td key={index} 
+                                            className={item.rain?"rainCell":((index%2)?"purpleCell":"whiteCell")}>
                                                 {(item.rain)?"Rain":"Clear"}
                                             </td>
                                         )
@@ -68,10 +69,11 @@ const WindowTable=({windowObject})=>{
 
                                 </tr>
                                 <tr>
-                                    <th className="frameSticky" >Precip.</th>
+                                    <th className="frameSticky windowRow" >Precip.</th>
                                     {windowItem.windowHours.map((item,index)=>{
                                         return (
-                                            <td key={index}  className={item.rain?"rainCell":""}>
+                                            <td key={index}  
+                                            className={item.rain?"rainCell":((index%2)?"purpleCell":"whiteCell")}>
                                                 {item.precip}
                                             </td>
                                         )
@@ -79,10 +81,11 @@ const WindowTable=({windowObject})=>{
 
                                 </tr>
                                 <tr>
-                                    <th className="frameSticky" >Temp</th>
+                                    <th className="frameSticky windowRow" >Temp</th>
                                     {windowItem.windowHours.map((item,index)=>{
                                         return (
-                                            <td key={index}  className={item.rain?"rainCell":""}>
+                                            <td key={index}  
+                                            className={item.rain?"rainCell":((index%2)?"purpleCell":"whiteCell")}>
                                                 {item.temp}°C
                                             </td>
                                         )
@@ -90,10 +93,11 @@ const WindowTable=({windowObject})=>{
 
                                 </tr>
                                 <tr>
-                                    <th className="frameSticky" >Status</th>
+                                    <th className="frameSticky windowRow" >Status</th>
                                     {windowItem.windowHours.map((item,index)=>{
                                         return (
-                                            <td key={index}  className={item.rain?"rainCell":""}>
+                                            <td key={index}  
+                                            className={item.rain?"rainCell":((index%2)?"purpleCell":"whiteCell")}>
                                                 <img 
                                                 src={`https://raw.githubusercontent.com/visualcrossing/WeatherIcons/refs/heads/main/PNG/2nd%20Set%20-%20Color/${item.icon}.png`}>
 
