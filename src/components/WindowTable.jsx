@@ -21,19 +21,49 @@ const WindowTable=({windowObject})=>{
 
     return(
         <>
-            <div>
+            <div className="windowTableContainer">
                 {
                     windowObject.map((windowItem,windowIndex)=>{
-                        return(<table>
-                            <tr>
-                                <th>{windowItem.startWindowDay}</th>
-                                {windowItem.windowHours.map((item,index)=>{
-                                    return (
-                                        <th>{timeFormatter(item.hour,item.minute)}</th>
-                                    )
-                                })}
-                            </tr>
-                        </table>)
+                        return(<div className="windowFrame" key={windowIndex} >
+                            <table className="windowTable">
+                            <thead>
+
+                                <tr>
+                                    <th className="frameSticky">{windowItem.startWindowDay}</th>
+                                    {windowItem.windowHours.map((item,index)=>{
+                                        return (
+                                            <th key={index}>{timeFormatter(item.hour,item.minute)}</th>
+                                        )
+                                    })}
+                                </tr>
+
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <th className="frameSticky" rowSpan={2}>Weather</th>
+                                    {windowItem.windowHours.map((item,index)=>{
+                                        return (
+                                            <td key={index} className={item.rain?"rainCell":""}>
+                                                {(item.rain)?"rain":"clear"}
+                                            </td>
+                                        )
+                                    })}
+
+                                </tr>
+                                <tr>
+                                    
+                                    {windowItem.windowHours.map((item,index)=>{
+                                        return (
+                                            <td key={index}  className={item.rain?"rainCell":""}>
+                                                {item.temp}°C
+                                            </td>
+                                        )
+                                    })}
+
+                                </tr>
+                            </tbody>
+                        </table></div>)
                     })
 
                 }
