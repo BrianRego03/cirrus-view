@@ -81,6 +81,11 @@
   overflow: auto;
   position: relative;
   max-width: 90vw;
+  border: 1px solid rgb(146, 146, 146);
+  border-collapse: collapse;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
 .windowTable{
   border-spacing: 0px;
@@ -106,10 +111,15 @@
   border-left: none;
 }
 
+.frameDivSticky{
+  position: sticky;
+  left: 0;  
+}
+
 .windowTableContainer{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items:flex-start;
 }
 
 .rainCell{
