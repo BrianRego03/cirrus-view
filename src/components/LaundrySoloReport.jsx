@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 // import { useAuth } from "./AuthContext";
 import { useCallback, useEffect, useState } from "react";
+import WindowTable from "./WindowTable";
 
 
 
@@ -73,6 +74,10 @@ const LaundrySoloReport = ()=>{
             <></>
           )}
         </div>
+
+        {loadingLaundryReport?.weather?(<div>
+          <WindowTable windowObject={loadingLaundryReport.weather} />
+        </div>):(<div></div>)}
 
         {/* <div
           className="laundryBasket"
