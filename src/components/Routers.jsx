@@ -6,6 +6,7 @@ import LogOut from "./LogOut";
 import Laundry from "./Laundry";
 import LaundrySolo from "./LaundrySolo";
 import LaundrySoloReport from "./LaundrySoloReport";
+import CreateLaundry from "./createLaundry";
 
 
 const router = createBrowserRouter([
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
             {path:"/laundry", element: <Laundry />},
             {path:"/laundry/:id", element: <LaundrySolo />},
             {path:"/laundry/:id/report", element: <LaundrySoloReport />},
+            {path:"/createLaundry", element: <CreateLaundry />},
         ],
     },
     {

@@ -23,7 +23,10 @@ const Dashboard = ()=>{
             </button>
           </span>
           <span>
-            <button>Set Laundry</button>
+            <button
+              onClick={()=>{
+                navigate("/createLaundry");
+              }}>Set Laundry</button>
           </span>
           <span>
             <button
