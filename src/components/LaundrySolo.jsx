@@ -87,22 +87,29 @@ const LaundrySolo = ()=>{
           {loadingLaundrySolo?.windows ? (
             loadingLaundrySolo.windows.map((item, index) => {
               return (
-                <div key={item.id} className="laundryCard">
-                  <div>
-                    {index +
-                      1 +
-                      ") " +
-                      item.startWindowDay +
-                      " " +
-                      timeFormatter(
-                        item.startWindowHour,
-                        item.startWindowMin,
-                        item.endWindowHour,
-                        item.endWindowMin
-                      )}
-                  </div>
+                <div key={item.id} className="windowHolder">
+                  <div className="windowCard">
+                    <div>
+                      {index +
+                        1 +
+                        ") " +
+                        item.startWindowDay +
+                        " "}
+                    </div>
+                    <div>
+                        {timeFormatter(
+                          item.startWindowHour,
+                          item.startWindowMin,
+                          item.endWindowHour,
+                          item.endWindowMin
+                        )}
+                    </div>
 
-                  <div>{item.location}</div>
+                    <div>{item.location}</div>
+                  </div>
+                  <div className="windowCardDelete">
+                    <button>X</button>
+                  </div>
                 </div>
               );
             })
