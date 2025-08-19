@@ -6,7 +6,7 @@ import LogOut from "./LogOut";
 import Laundry from "./Laundry";
 import LaundrySolo from "./LaundrySolo";
 import LaundrySoloReport from "./LaundrySoloReport";
-import CreateLaundry from "./createLaundry";
+import CreateLaundry from "./CreateLaundry";
 
 
 const router = createBrowserRouter([
