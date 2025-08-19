@@ -29,7 +29,8 @@ const CreateWindowForm=({parentId})=>{
 
     const handleStartTime = (timeString)=>{
         if(edHour!="" && (edHour<=(+(timeString.split(":")[0])))){
-            setStartError("Start time must be earlier than end time");
+          setStartTime("");
+          setStartError("Start time must be earlier than end time");
         }else{
             setStartTime(timeString);
             setSwHour(+(timeString.split(":")[0]));
@@ -41,6 +42,7 @@ const CreateWindowForm=({parentId})=>{
 
     const handleEndTime = (timeString)=>{
         if(swHour!="" && ((+(timeString.split(":")[0]))<=swHour)){
+            setEndTime("");
             setEndError("End time must be later than start time");
         }else{
             setEndTime(timeString);
