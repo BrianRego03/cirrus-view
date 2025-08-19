@@ -82,9 +82,7 @@ const LaundrySolo = ()=>{
 
         <div
           className="laundryBasket"
-          onClick={() => {
-            navigate("/");
-          }}
+
         >
           {loadingLaundrySolo?.windows ? (
             loadingLaundrySolo.windows.map((item, index) => {
