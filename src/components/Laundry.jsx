@@ -1,14 +1,14 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 // import { useAuth } from "./AuthContext";
 import { useCallback, useEffect, useState } from "react";
 import LaundryBasket from "./LaundryBasket";
+const API_URL=  import.meta.env.VITE_API_URL;
 
 
 
 const Laundry = ()=>{
     // const {user}= useAuth();
     const [loadingLaundry,setLaundry]=useState(null);
-    const navigate = useNavigate();
 
     const fetchAllLaundry= useCallback(() => {
           (async () => {
@@ -33,7 +33,30 @@ const Laundry = ()=>{
 
     useEffect(()=>{
         fetchAllLaundry();
-    },[fetchAllLaundry])
+    },[fetchAllLaundry]);
+
+    const deleteLaundryCall=async(laundryID)=>{
+        try {
+              const res = await fetch(
+                `${API_URL}/laundry/${laundryID}`,
+                {
+                method:'DELETE',
+                credentials:"include",
+                headers:{
+                    'Content-type':'application/json',
+                },
+                }
+              );
+
+              const data = await res.json();
+              console.log(data);
+              setLaundry(data);
+
+            } catch (err) {
+              console.error(err);
+              alert("Network error");
+            }
+    }
 
 
 
@@ -41,7 +64,7 @@ const Laundry = ()=>{
 
     return (
       <>
-        <LaundryBasket laundryArray={loadingLaundry}/>
+        <LaundryBasket laundryArray={loadingLaundry} dropFunction={deleteLaundryCall}/>
 
 
 

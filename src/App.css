@@ -51,13 +51,23 @@
   margin-top: 60px;
 }
 
-.laundryCard{
+.laundryContainer{
   width: 60%;
   height:80px;
   border: 1px solid blue;
   margin-top: 20px;
   font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.laundryCard{
+  width: 85%;
+  
   padding: 5px;
+  font-size: 20px;
+  
   
 }
 
@@ -65,7 +75,7 @@
   text-align: left;
 }
 
-.laundryCard:hover{
+.laundryContainer:hover{
   background-color: blue;
   color: white;
 }
