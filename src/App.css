@@ -146,3 +146,13 @@
 .windowTable img{
   width: 40px;
 }
+
+.windowForm{
+  z-index: 30;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+}

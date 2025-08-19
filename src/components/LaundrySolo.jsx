@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 // import { useAuth } from "./AuthContext";
 import { useCallback, useEffect, useState } from "react";
+import CreateWindowForm from "./CreateWindowForm";
 
 
 
@@ -68,9 +69,7 @@ const LaundrySolo = ()=>{
               <div>Location : {loadingLaundrySolo.location}</div>
               <div className="laundryCard" onClick={()=>{navigate(`/laundry/${lid}/report`)}}>
                 Weather Report</div>
-              <div className="laundryCard" onClick={()=>{navigate(`/`)}}>
-                Add new Laundry window
-              </div>
+              <CreateWindowForm />
             </>
           ) : (
             <></>
@@ -113,6 +112,8 @@ const LaundrySolo = ()=>{
             <></>
           )}
         </div>
+
+        
       </>
     );
 }
