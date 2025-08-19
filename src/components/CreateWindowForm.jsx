@@ -1,7 +1,8 @@
 import { useState } from "react"
+const API_URL = import.meta.env.VITE_API_URL;
 
 
-const CreateWindowForm=()=>{
+const CreateWindowForm=({parentId})=>{
     const [windowFormState,setWindowFormState]=useState(false);
 
     const [startTime,setStartTime]=useState("");
@@ -15,6 +16,16 @@ const CreateWindowForm=()=>{
     const [edMin,setEdMin]=useState("");
     const [startError,setStartError]=useState("");
     const [endError,setEndError]=useState("");
+
+    const dayArray = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ];
 
     const handleStartTime = (timeString)=>{
         if(edHour!="" && (edHour<=(+(timeString.split(":")[0])))){
@@ -40,46 +51,117 @@ const CreateWindowForm=()=>{
 
     }
 
-
-    return <>
-    <div className="laundryCard" onClick={()=>{setWindowFormState(!windowFormState)}}>
-        Add new Laundry window
-    </div>
-    {windowFormState&&    
-        (<div className="windowForm" >
-            <form>
-                <legend>Create a Laundry Window</legend>
-                <input type="hidden" name="swDay"></input>
-                <input type="hidden" name="swHour"></input>
-                <input type="hidden" name="swMin"></input>
-                <input type="hidden" name="edDay"></input>
-                <input type="hidden" name="edHour"></input>
-                <input type="hidden" name="edMin"></input>
-                <input type="hidden" name="wtype"></input>
-                <div>
-                    <div><label>Day:</label></div>
-                    <input type="text" value={windowDay} onChange={(e)=>{setWindowDay(e.target.value)}}>
-                    </input>
-                    
-                </div>
-                <div>
-                    <label>Start Time:</label>
-                    <input type="time" value={startTime} onChange={(e)=>{handleStartTime(e.target.value)}}>
-                    </input>
-                    <div>{startError}</div>
-                </div>
-                <div>
-                    <label>End Time:</label>
-                    <input type="time" value={endTime} onChange={(e)=>{handleEndTime(e.target.value)}}>
-                    </input>
-                    <div>{endError}</div>
-                </div>
-                <button type="submit">Create Window</button>
-            </form>
-        </div>)
+    const handleWindowDay =(dayString)=>{
+        setWindowDay(dayString);
+        setSwDay(dayString);
+        setEdDay(dayString);
     }
-    
-    </>
+
+    const windowSubmit=async(e)=>{
+        e.preventDefault();
+        // console.log(planName);
+        try{
+            const response = await fetch(`${API_URL}/windows`,{
+                method:'POST',
+                credentials:"include",
+                headers:{
+                    'Content-type':'application/json',
+                },
+                body:JSON.stringify({
+                    swDay:swDay,
+                    swHour:swHour,
+                    swMin:swMin,
+                    edDay:edDay,
+                    edHour:edHour,
+                    edMin:edMin,
+                    wtype:e.target.wtype.value,
+                    parentid:e.target.parentid.value,
+                })
+            });
+            if(!response.ok)throw new Error('Submission failed');
+            const result = await response.json();
+            console.log(result);
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+
+    return (
+      <>
+        <div
+          className="laundryCard"
+          onClick={() => {
+            setWindowFormState(!windowFormState);
+          }}
+        >
+          Add new Laundry window
+        </div>
+        {windowFormState && (
+          <div className="backdrop">
+            <form className="windowForm" onSubmit={windowSubmit}>
+              <div className="closebuttonContainer">
+                <button
+                  onClick={() => {
+                    setWindowFormState(!windowFormState);
+                  }}
+                >
+                  X
+                </button>
+              </div>
+              <legend>Create a Laundry Window</legend>
+              <input type="hidden" name="swDay"></input>
+              <input type="hidden" name="swHour"></input>
+              <input type="hidden" name="swMin"></input>
+              <input type="hidden" name="edDay"></input>
+              <input type="hidden" name="edHour"></input>
+              <input type="hidden" name="edMin"></input>
+              <input type="hidden" name="wtype" value="laundryId"></input>
+              <input type="hidden" name="parentid" value={+parentId}></input>
+              <div>
+                <div>
+                  <label>Day:</label>
+                </div>
+
+                <select
+                  onChange={(e) => {
+                    handleWindowDay(e.target.value);
+                  }}
+                >
+                  <option value="" selected></option>
+                  {dayArray.map((item) => {
+                    return <option value={item}>{item}</option>;
+                  })}
+                </select>
+              </div>
+              <div>
+                <label>Start Time:</label>
+                <input
+                  type="time"
+                  value={startTime}
+                  onChange={(e) => {
+                    handleStartTime(e.target.value);
+                  }}
+                ></input>
+                <div>{startError}</div>
+              </div>
+              <div>
+                <label>End Time:</label>
+                <input
+                  type="time"
+                  value={endTime}
+                  onChange={(e) => {
+                    handleEndTime(e.target.value);
+                  }}
+                ></input>
+                <div>{endError}</div>
+              </div>
+              <button type="submit" >Create Window</button>
+            </form>
+          </div>
+        )}
+      </>
+    );
 
 }
 
