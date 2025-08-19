@@ -128,9 +128,9 @@ const CreateWindowForm=({parentId})=>{
                     handleWindowDay(e.target.value);
                   }}
                 >
-                  <option value="" selected></option>
-                  {dayArray.map((item) => {
-                    return <option value={item}>{item}</option>;
+                  <option value="" defaultValue={""}></option>
+                  {dayArray.map((item,index) => {
+                    return <option value={item} key={index}>{item}</option>;
                   })}
                 </select>
               </div>
