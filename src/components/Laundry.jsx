@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 // import { useAuth } from "./AuthContext";
 import { useCallback, useEffect, useState } from "react";
+import LaundryBasket from "./LaundryBasket";
 
 
 
@@ -40,20 +41,9 @@ const Laundry = ()=>{
 
     return (
       <>
+        <LaundryBasket laundryArray={loadingLaundry}/>
 
-        <div className="laundryBasket" >
-            {(Array.isArray(loadingLaundry))?
-                loadingLaundry.map((item,index)=>{
-                    return(
-                    <div key={item.id} className="laundryCard" onClick={()=>{navigate(`/laundry/${item.id}`)}}>
-                        <div >{(index + 1) + ") " + item.name}</div>
-                        <div >{item.location}</div>
-                    </div>)
-                })
 
-                :<></>}
- 
-        </div>
 
       </>
     );
