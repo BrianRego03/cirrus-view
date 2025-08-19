@@ -2,6 +2,8 @@ import { useParams, useNavigate } from "react-router-dom";
 // import { useAuth } from "./AuthContext";
 import { useCallback, useEffect, useState } from "react";
 import CreateWindowForm from "./CreateWindowForm";
+import PopUpAlert from "./PopUpAlert";
+const API_URL = import.meta.env.VITE_API_URL;
 
 
 
@@ -35,7 +37,7 @@ const LaundrySolo = ()=>{
           (async () => {
             try {
               const res = await fetch(
-                `http://localhost:3000/laundry/${lid}`,
+                `${API_URL}/laundry/${lid}`,
                 {
                   credentials: "include",
                 }
@@ -54,7 +56,30 @@ const LaundrySolo = ()=>{
 
     useEffect(()=>{
         fetchLaundrySolo();
-    },[fetchLaundrySolo])
+    },[fetchLaundrySolo]);
+
+    const deleteWindowCall=async(windowID)=>{
+        try {
+              const res = await fetch(
+                `${API_URL}/windows/${windowID}`,
+                {
+                method:'DELETE',
+                credentials:"include",
+                headers:{
+                    'Content-type':'application/json',
+                },
+                }
+              );
+
+              const data = await res.json();
+              console.log(data);
+              setLaundrySolo(data);
+
+            } catch (err) {
+              console.error(err);
+              alert("Network error");
+            }
+    }
 
 
 
@@ -89,26 +114,25 @@ const LaundrySolo = ()=>{
               return (
                 <div key={item.id} className="windowHolder">
                   <div className="windowCard">
+                    <div>{index + 1 + ") " + item.startWindowDay + " "}</div>
                     <div>
-                      {index +
-                        1 +
-                        ") " +
-                        item.startWindowDay +
-                        " "}
-                    </div>
-                    <div>
-                        {timeFormatter(
-                          item.startWindowHour,
-                          item.startWindowMin,
-                          item.endWindowHour,
-                          item.endWindowMin
-                        )}
+                      {timeFormatter(
+                        item.startWindowHour,
+                        item.startWindowMin,
+                        item.endWindowHour,
+                        item.endWindowMin
+                      )}
                     </div>
 
                     <div>{item.location}</div>
                   </div>
                   <div className="windowCardDelete">
-                    <button>X</button>
+                    <PopUpAlert
+                      buttonmsg="X"
+                      alertmsg="Are you sure you want to delete this window?"
+                      alertFunction={()=>{deleteWindowCall(item.id)}}
+                     
+                    />
                   </div>
                 </div>
               );
