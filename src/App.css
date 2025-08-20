@@ -1,3 +1,23 @@
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --text: #111827;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #020817;
+  --button: #3B82F6;
+  --button-text: #0F172A;
+  --text: #F8FAFC;
+  --text-sub: #94A3B8;
+  --modal: #0F172A;
+  --icon-bg: #08142E;
+  --icon: #F8FAFC;
+  --icon-bg-alt: #08142E;
+  --icon-alt: #3B82F6;
+  --border-line: #1E293B;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -15,6 +35,7 @@
   body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    background-color: var(--bg);
   }
   /*
     5. Improve media defaults
