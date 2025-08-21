@@ -8,7 +8,7 @@ const LaundryBasket=({laundryArray,dropFunction})=>{
     const navigate=useNavigate();
 
     return(
-        <div className="laundryBasket" >
+        <div className="laundryBasketModal" >
             {(Array.isArray(laundryArray))?
                 laundryArray.map((item,index)=>{
                     return(

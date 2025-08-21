@@ -106,7 +106,7 @@ const LaundrySolo = ()=>{
         
 
         <div
-          className="laundryBasket"
+          className="laundryBasketModal"
 
         >
           {loadingLaundrySolo?.windows ? (

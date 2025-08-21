@@ -1,7 +1,16 @@
 :root {
   color-scheme: light;
-  --bg: #ffffff;
-  --text: #111827;
+  --bg: #F8FAFC;        /* Soft off-white background */
+  --button: #3B82F6;    /* Accent button (blue stays consistent) */
+  --button-text: #ffffff; /* White text on blue button */
+  --text: #1E293B;      /* Dark gray text (not pure black) */
+  --text-sub: #64748B;  /* Muted gray-blue for secondary text */
+  --modal: #F1F5F9;     /* Slightly darker than bg for modal contrast */
+  --icon-bg: #E2E8F0;   /* Gentle light gray for icons */
+  --icon: #1E293B;      /* Dark neutral icon color */
+  --icon-bg-alt: #E5E7EB; /* Alternate subtle gray */
+  --icon-alt: #3B82F6;  /* Accent icon (blue) */
+  --border-line: #CBD5E1; /* Soft border (light gray-blue) */
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -73,10 +82,12 @@
 }
 
 .laundryContainer{
-  width: 60%;
-  height:80px;
-  border: 1px solid blue;
-  margin-top: 20px;
+  width: 250px;
+  height:100px;
+  border: 1px solid var(--border-line);
+  background-color: var(--modal);
+  /* margin-top: 20px; */
+  margin: 20px;
   font-size: 20px;
   display: flex;
   flex-direction: row;
@@ -106,6 +117,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.laundryBasketModal{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .windowFrame{
@@ -236,13 +257,17 @@
 }
 
 .windowHolder{
-  width: 60%;
-  border: 1px solid blue;
+  /* width: 60%; */
+  width: 250px;
+  height:80px;
+  border: 1px solid var(--border-line);
+  background-color: var(--modal);
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 20px;
   display: flex;
   flex-direction: row;
+  max-width: 250px;
 }
 
 
