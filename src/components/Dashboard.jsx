@@ -8,7 +8,7 @@ const Dashboard = ()=>{
     const navigate =useNavigate();
     return (
       <>
-        <div>Cirrusview</div>
+        {/* <div>Cirrusview</div> */}
         <div>
           {user?.user ? `Hi ${user.user.username}` : "You are not logged in"}
         </div>

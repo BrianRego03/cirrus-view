@@ -2,6 +2,7 @@ import { RouterProvider } from 'react-router-dom'
 import './App.css'
 import router from './components/Routers'
 import { useState,useEffect } from 'react';
+import Bulb from './components/icons/bulb';
 
 function App() {
 
@@ -21,11 +22,13 @@ function App() {
 
   return (
     <>
-      <div style={{ padding: "1rem" }}>
-        <button onClick={toggleTheme}>
-          Switch to {theme === "dark" ? "Light" : "Dark"} Mode
+      <div className='' style={{ padding: "1rem" }}>
+        <button className='themeButtonContainer' onClick={toggleTheme}>
+          
+          <Bulb className="iconTheme" />
+  
+
         </button>
-        <p>Current theme: {theme}</p>
       </div>
       <RouterProvider router={router} />
     </>

@@ -319,3 +319,14 @@
 
 }
 
+.iconTheme{
+  color: var(--icon);
+  height: 30px;
+  width: 30px;
+}
+
+.themeButtonContainer{
+  background-color: transparent;
+  border: none;
+}
+
