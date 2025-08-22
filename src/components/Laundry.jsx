@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
-// import { useAuth } from "./AuthContext";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 import { useCallback, useEffect, useState } from "react";
 import LaundryBasket from "./LaundryBasket";
 const API_URL=  import.meta.env.VITE_API_URL;
@@ -7,7 +7,8 @@ const API_URL=  import.meta.env.VITE_API_URL;
 
 
 const Laundry = ()=>{
-    // const {user}= useAuth();
+    const {user}= useAuth();
+    const navigate = useNavigate();
     const [loadingLaundry,setLaundry]=useState(null);
 
     const fetchAllLaundry= useCallback(() => {
@@ -32,6 +33,9 @@ const Laundry = ()=>{
         },[]);
 
     useEffect(()=>{
+      if(!user){
+        ()=>{navigate("/")};
+      }
         fetchAllLaundry();
     },[fetchAllLaundry]);
 

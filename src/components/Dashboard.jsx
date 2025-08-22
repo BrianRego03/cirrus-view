@@ -9,9 +9,6 @@ const Dashboard = ()=>{
     return (
       <>
         <HeaderSub />
-
-   
-
         <div className="outletContainer">
           <Outlet />
         </div>
