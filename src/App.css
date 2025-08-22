@@ -365,7 +365,7 @@
 }
 .accountStatus div{
   /* margin-right: 20px; */
-  width: 110px;
+  width: 140px;
   text-align: center;
   display: flex;
   padding: 10px;
@@ -376,5 +376,11 @@
   background-color: var(--nav-hover-bg);
   cursor: pointer;
 }
-
+.nameLimiter{
+  white-space: nowrap;       
+  overflow: hidden;          
+  text-overflow: ellipsis; 
+  display: inline-block;
+  max-width: 70%;
+}
 

@@ -1,6 +1,6 @@
 
 import { useState,useEffect } from 'react';
-import Bulb from './icons/bulb';
+import Bulb from './icons/Bulb';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
 import LogoutIcon from './icons/LogoutIcon';
@@ -54,7 +54,7 @@ const Header=()=>{
                     <button className="themeButtonContainer">
                       <AccountIcon className="iconTheme" />
                     </button>
-                    Hi {user.user.username}
+                      <span className='nameLimiter'>{user.user.username}</span>
                   </div>
                   <div
                     onClick={() => {
