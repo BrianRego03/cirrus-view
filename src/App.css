@@ -203,7 +203,8 @@
 
 .windowForm{
   z-index: 30;
-  background-color: white;
+  background-color: var(--bg);
+  border: 1px solid var(--border-line);
   padding: 20px;
   border-radius: 10px;
   min-width: 300px;
@@ -211,8 +212,8 @@
 
 .popupForm{
   z-index: 30;
-  background-color: white;
-  color: black;
+  background-color: var(--bg);
+  color: var(--text);
   padding: 20px;
   border-radius: 10px;
   min-width: 250px;

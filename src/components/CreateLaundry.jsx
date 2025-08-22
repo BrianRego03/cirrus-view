@@ -5,6 +5,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 
 const CreateLaundry=()=>{
+    const [laundryFormState,setLaundryFormState]=useState(false);
 
     const {user,loading}= useAuth();
     const navigate=useNavigate();
@@ -49,8 +50,26 @@ const CreateLaundry=()=>{
 
     return (<>
         
-        
-            <form onSubmit={laundrySubmit}>
+  <div
+          className="laundryCard"
+          onClick={() => {
+            setLaundryFormState(!laundryFormState);
+          }}
+        >
+          Add new Laundry Plan
+        </div>
+        {laundryFormState && (
+          <div className="backdrop">       
+            <form className="windowForm" onSubmit={laundrySubmit}>
+                <div className="closebuttonContainer">
+                <button
+                    onClick={() => {
+                    setLaundryFormState(!laundryFormState);
+                    }}
+                >
+                    X
+                </button>
+                </div>
                 <legend>Create new Laundry plan</legend>
                 <div>
                     <label>Plan name:</label>
@@ -70,6 +89,7 @@ const CreateLaundry=()=>{
                 <button type="submit">Create Plan</button>
 
             </form>
+            </div>)}
         
         
        
