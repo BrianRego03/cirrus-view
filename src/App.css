@@ -344,6 +344,10 @@
   
 }
 
+.headerTitle:hover{
+  cursor: pointer;
+}
+
 .headerRight{
   display: flex;
   justify-content: center;
