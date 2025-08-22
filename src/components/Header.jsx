@@ -7,6 +7,7 @@ import LogoutIcon from './icons/LogoutIcon';
 import AccountIcon from './icons/AccountIcon';
 import SignUpIcon from './icons/SignUpIcon';
 import LoginIcon from './icons/LogInIcon';
+import LaundryIcon from './icons/LaundryIcon';
 
 
 const Header=()=>{
@@ -29,12 +30,18 @@ const Header=()=>{
       <>
         <div className="headerCollection">
           <div className="headerLeft">
-            <div className="headerTitle">Cirrus View</div>
+            <div className="headerTitle" onClick={()=>{navigate("/")}}>Cirrus View</div>
           </div>
           <div className="headerRight">
             <div className="accountStatus">
-              <div>
-                <button className="themeButtonContainer" onClick={toggleTheme}>
+              <div onClick={()=>{navigate("/laundry")}}>
+                <button className="themeButtonContainer" >
+                  <LaundryIcon className="iconTheme" />
+                </button>
+                Laundry
+              </div>  
+              <div onClick={toggleTheme}>
+                <button className="themeButtonContainer" >
                   <Bulb className="iconTheme" />
                 </button>
                 {theme === "light" ? "Dark" : "Light"}

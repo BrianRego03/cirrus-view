@@ -11,6 +11,7 @@
   --icon-bg-alt: #E5E7EB; /* Alternate subtle gray */
   --icon-alt: #3B82F6;  /* Accent icon (blue) */
   --border-line: #CBD5E1; /* Soft border (light gray-blue) */
+  --nav-hover-bg: #CBD5E1;
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -25,6 +26,7 @@
   --icon-bg-alt: #08142E;
   --icon-alt: #3B82F6;
   --border-line: #1E293B;
+  --nav-hover-bg: #1E293B;
 }
 
 *, *::before, *::after {
@@ -334,7 +336,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  
 }
 
 .headerTitle{
@@ -345,8 +347,9 @@
 .headerRight{
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-shrink: 2;
+  align-items:flex-start;
+  /* flex-shrink: 2; */
+  height: 56px;
 }
 
 .accountStatus{
@@ -359,8 +362,13 @@
   width: 110px;
   text-align: center;
   display: flex;
-  
+  padding: 10px;
   align-items: center;  
+}
+
+.accountStatus div:hover{
+  background-color: var(--nav-hover-bg);
+  cursor: pointer;
 }
 
 
