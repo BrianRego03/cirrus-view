@@ -85,8 +85,9 @@
 
 .laundryContainer{
   width: 250px;
-  height:100px;
+  height:150px;
   border: 1px solid var(--border-line);
+  border-radius: 10px;
   background-color: var(--modal);
   /* margin-top: 20px; */
   margin: 20px;
