@@ -2,9 +2,15 @@
 import { useState,useEffect } from 'react';
 import Bulb from './icons/bulb';
 import { useAuth } from './AuthContext';
+import { useNavigate } from 'react-router-dom';
+import LogoutIcon from './icons/LogoutIcon';
+import AccountIcon from './icons/AccountIcon';
+import SignUpIcon from './icons/SignUpIcon';
+import LoginIcon from './icons/LogInIcon';
 
 
 const Header=()=>{
+    const navigate=useNavigate();
     const {user}= useAuth();
     const [theme, setTheme] = useState(
         document.documentElement.getAttribute("data-theme") || "light"
@@ -19,29 +25,70 @@ const Header=()=>{
         setTheme((t) => (t === "dark" ? "light" : "dark"));
     };
 
-    return(
-    <>
-        <div className='headerCollection'>
-            <div className='headerLeft'>
-                <div className='headerTitle'>Cirrus View</div>
+    return (
+      <>
+        <div className="headerCollection">
+          <div className="headerLeft">
+            <div className="headerTitle">Cirrus View</div>
+          </div>
+          <div className="headerRight">
+            <div className="accountStatus">
+              <div>
+                <button className="themeButtonContainer" onClick={toggleTheme}>
+                  <Bulb className="iconTheme" />
+                </button>
+                {theme === "light" ? "Dark" : "Light"}
+              </div>
             </div>
-            <div className='headerRight'>
-                <div>
-                    {user?.user ? `Hi ${user.user.username}` : "You are not logged in"}
-                </div>
-                <div className='' style={{ padding: "1rem" }}>
-                    <button className='themeButtonContainer' onClick={toggleTheme}>
-                    
-                    <Bulb className="iconTheme" />
-            
-
+            <div className="accountStatus">
+              {user?.user ? (
+                <>
+                  <div>
+                    <button className="themeButtonContainer">
+                      <AccountIcon className="iconTheme" />
                     </button>
-                </div>
+                    Hi {user.user.username}
+                  </div>
+                  <div
+                    onClick={() => {
+                      navigate("/logout");
+                    }}
+                  >
+                    <button className="themeButtonContainer">
+                      <LogoutIcon className="iconTheme" />
+                    </button>
+                    <span>Log Out</span>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div
+                    onClick={() => {
+                      navigate("/signup");
+                    }}
+                  >
+                    <button className="themeButtonContainer">
+                      <SignUpIcon className="iconTheme" />
+                    </button>
+                    <span>Sign Up</span>
+                  </div>
+                  <div
+                    onClick={() => {
+                      navigate("/login");
+                    }}
+                  >
+                    <button className="themeButtonContainer">
+                      <LoginIcon className="iconTheme" />
+                    </button>
+                    <span>Log in</span>
+                  </div>
+                </>
+              )}
             </div>
-
+          </div>
         </div>
-    </>
-    )
+      </>
+    );
 }
 
 export default Header;

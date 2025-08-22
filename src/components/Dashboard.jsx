@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
-
+import HeaderSub from "./HeaderSub";
 
 
 const Dashboard = ()=>{
@@ -9,6 +9,7 @@ const Dashboard = ()=>{
     return (
       <>
         {/* <div>Cirrusview</div> */}
+        <HeaderSub />
 
         <div>
           <span>
