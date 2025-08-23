@@ -499,6 +499,13 @@
   padding:0px;
   border: none;
   background-color: transparent;
+
+}
+
+.deletionButton svg{
+  height: 30px;
+  width: 30px;
+
 }
 
 .deletionButton svg:hover{
