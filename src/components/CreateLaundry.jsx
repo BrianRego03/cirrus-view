@@ -71,22 +71,38 @@ const CreateLaundry=()=>{
                 </button>
                 </div>
                 <legend>Create new Laundry plan</legend>
+                <div><hr></hr></div>
                 <div>
-                    <label>Plan name:</label>
+                    <div>
+                        <label>Plan name:</label>
+                    </div>
+                    
                     <input type="text" value={planName} onChange={(e)=>{setPlanName(e.target.value)}}>
                     </input>
                 </div>
+                <div><hr></hr></div>
                 <div>
-                    <label>Area:</label>
+                    <div>
+                        <label>Area:</label>
+                    </div>
+                    
                     <input type="text" value={area} onChange={(e)=>{setArea(e.target.value)}}>
                     </input>
                 </div>
+                <div><hr></hr></div>
                 <div>
-                    <label>City:</label>
+                    <div>
+                        <label>City:</label>
+                    </div>
+                    
                     <input type="text" value={city} onChange={(e)=>{setCity(e.target.value)}}>
                     </input>
                 </div>
-                <button type="submit">Create Plan</button>
+                <div><hr></hr></div>
+                <div className="buttonAligner">
+                    <button className="siteButton" type="submit">Create Plan</button>
+                </div>
+                
 
             </form>
             </div>)}

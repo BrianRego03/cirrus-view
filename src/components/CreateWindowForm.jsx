@@ -137,7 +137,10 @@ const CreateWindowForm=({parentId})=>{
                 </select>
               </div>
               <div>
-                <label>Start Time:</label>
+                <div>
+                  <label>Start Time:</label>
+                </div>
+                
                 <input
                   type="time"
                   value={startTime}
@@ -145,10 +148,13 @@ const CreateWindowForm=({parentId})=>{
                     handleStartTime(e.target.value);
                   }}
                 ></input>
-                <div>{startError}</div>
+                <div className="errorDivision">{startError}</div>
               </div>
               <div>
-                <label>End Time:</label>
+                <div>
+                  <label>End Time:</label>
+                </div>
+                
                 <input
                   type="time"
                   value={endTime}
@@ -156,9 +162,12 @@ const CreateWindowForm=({parentId})=>{
                     handleEndTime(e.target.value);
                   }}
                 ></input>
-                <div>{endError}</div>
+                <div className="errorDivision">{endError}</div>
               </div>
-              <button type="submit" >Create Window</button>
+              <div className="buttonAligner">
+                  <button className="siteButton" type="submit" >Create Window</button>
+              </div>
+              
             </form>
           </div>
         )}

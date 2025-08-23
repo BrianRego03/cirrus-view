@@ -233,6 +233,15 @@
   min-width: 300px;
 }
 
+.windowForm div{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.windowForm input{
+  text-align: left;
+}
+
 .popupForm{
   z-index: 30;
   background-color: var(--modal);
@@ -474,4 +483,17 @@
   justify-content: space-evenly;
   align-items:center;
   width: min(100%,600px);
+}
+
+.buttonAligner{
+  display: flex;
+  justify-content: center;
+}
+
+.errorDivision{
+  height: 15px;
+  width: 250px;
+  font-size: 11px;
+  text-align: center;
+  word-wrap: break-word;
 }
