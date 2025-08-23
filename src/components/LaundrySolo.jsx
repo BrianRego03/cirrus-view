@@ -92,9 +92,12 @@ const LaundrySolo = ()=>{
             <>
               <div>Laundry Name : {loadingLaundrySolo.name}</div>
               <div>Location : {loadingLaundrySolo.location}</div>
-              <div className="laundryCard" onClick={()=>{navigate(`/laundry/${lid}/report`)}}>
-                Weather Report</div>
-              <CreateWindowForm parentId={lid}/>
+              <div className="laundryButtonContainer">
+                <div className="siteButton standardButton" 
+                onClick={()=>{navigate(`/laundry/${lid}/report`)}}>
+                  <span>Weather Report</span></div>
+                <CreateWindowForm parentId={lid}/>
+              </div>
             </>
           ) : (
             <></>
@@ -112,8 +115,16 @@ const LaundrySolo = ()=>{
           {loadingLaundrySolo?.windows ? (
             loadingLaundrySolo.windows.map((item, index) => {
               return (
-                <div key={item.id} className="windowHolder">
-                  <div className="windowCard">
+                <div key={item.id} className="laundryContainer">
+                  <div className="windowCardDelete">
+                    <PopUpAlert
+                      buttonmsg="X"
+                      alertmsg="Are you sure you want to delete this window?"
+                      alertFunction={()=>{deleteWindowCall(item.id)}}
+                     
+                    />
+                  </div>
+                  <div className="laundryCard">
                     <div>{index + 1 + ") " + item.startWindowDay + " "}</div>
                     <div>
                       {timeFormatter(
@@ -126,14 +137,7 @@ const LaundrySolo = ()=>{
 
                     <div>{item.location}</div>
                   </div>
-                  <div className="windowCardDelete">
-                    <PopUpAlert
-                      buttonmsg="X"
-                      alertmsg="Are you sure you want to delete this window?"
-                      alertFunction={()=>{deleteWindowCall(item.id)}}
-                     
-                    />
-                  </div>
+
                 </div>
               );
             })

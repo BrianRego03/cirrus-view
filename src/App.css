@@ -13,6 +13,7 @@
   --icon-bg-alt: #E5E7EB; /* Alternate subtle gray */
   --icon-alt: #3B82F6;  /* Accent icon (blue) */
   --border-line: #CBD5E1; /* Soft border (light gray-blue) */
+  --border-line-hover: #94A3B8; 
   --nav-hover-bg: #CBD5E1;
   --site-button: #334155;
   --danger:        #EF4444;       /* red-500 */
@@ -28,12 +29,13 @@
   --text: #F8FAFC;
   --text-sub: #94A3B8;
   --modal: #0F172A;
-  --modal-hover: #1E293B;
+  --modal-hover: #0B1220;
   --icon-bg: #08142E;
   --icon: #F8FAFC;
   --icon-bg-alt: #08142E;
   --icon-alt: #3B82F6;
   --border-line: #1E293B;
+  --border-line-hover: #273449; 
   --nav-hover-bg: #1E293B;
   --site-button: #334155;
   --danger:        #F87171;       /* red-400 */
@@ -130,6 +132,7 @@
 
 .laundryContainer:hover{
   background-color: var(--modal-hover);
+  border: 1px solid var(--border-line-hover);
   cursor: pointer;
 }
 
@@ -138,6 +141,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .laundryBasketModal{
@@ -258,6 +262,7 @@
 }
 .popupButton:hover{
   background-color: var(--button-hover);
+  border: 1px solid var(--border-line-hover);
   cursor: pointer;
 }
 .backdrop {
@@ -355,6 +360,7 @@
 
 .windowCardDelete button:hover{
   background-color: var(--danger-hover);
+  border: 1px solid var(--border-line-hover);
   cursor: pointer;
 }
 
@@ -428,9 +434,13 @@
   border-radius: 15px;
   font-weight: 700;
   font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .siteButton:hover{
   background-color: var(--button-hover);
+  border: 1px solid var(--border-line-hover);
   cursor: pointer;
 }
 
@@ -447,4 +457,21 @@
   text-overflow: ellipsis; 
   display: inline-block;
   max-width: 100%;
+}
+
+.standardButton{
+  width: min(250px,100%);
+  height: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
+}
+
+.laundryButtonContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items:center;
+  width: min(100%,600px);
 }

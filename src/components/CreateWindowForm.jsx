@@ -92,12 +92,12 @@ const CreateWindowForm=({parentId})=>{
     return (
       <>
         <div
-          className="laundryCard"
+          className="siteButton standardButton"
           onClick={() => {
             setWindowFormState(!windowFormState);
           }}
         >
-          Add new Laundry window
+          <span>Add new Laundry window</span>
         </div>
         {windowFormState && (
           <div className="backdrop">
