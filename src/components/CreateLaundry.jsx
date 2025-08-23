@@ -51,7 +51,7 @@ const CreateLaundry=()=>{
     return (<>
         
   <div
-          className="laundryCard"
+          className="siteButton"
           onClick={() => {
             setLaundryFormState(!laundryFormState);
           }}
@@ -67,7 +67,7 @@ const CreateLaundry=()=>{
                     setLaundryFormState(!laundryFormState);
                     }}
                 >
-                    X
+                    x
                 </button>
                 </div>
                 <legend>Create new Laundry plan</legend>

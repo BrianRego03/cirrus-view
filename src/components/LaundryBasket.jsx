@@ -13,10 +13,6 @@ const LaundryBasket=({laundryArray,dropFunction})=>{
                 laundryArray.map((item,index)=>{
                     return(
                 <div key={item.id} className="laundryContainer">
-                    <div className="laundryCard" onClick={()=>{navigate(`/laundry/${item.id}`)}}>
-                        <div >{(index + 1) + ") " + item.name}</div>
-                        <div >{item.location}</div>
-                    </div>
                     <div className="windowCardDelete">
                         <PopUpAlert
                             buttonmsg="X"
@@ -25,6 +21,11 @@ const LaundryBasket=({laundryArray,dropFunction})=>{
                             
                         />
                     </div>
+                    <div className="laundryCard" onClick={()=>{navigate(`/laundry/${item.id}`)}}>
+                        <div >{(index + 1) + ") " + item.name}</div>
+                        <div className="laundryCardLimiter">{item.location}</div>
+                    </div>
+
                 </div>
                   )
                 })

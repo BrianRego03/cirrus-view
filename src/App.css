@@ -2,31 +2,43 @@
   color-scheme: light;
   --bg: #F8FAFC;        /* Soft off-white background */
   --button: #3B82F6;    /* Accent button (blue stays consistent) */
+  --button-hover: #3576DF;
   --button-text: #ffffff; /* White text on blue button */
   --text: #1E293B;      /* Dark gray text (not pure black) */
   --text-sub: #64748B;  /* Muted gray-blue for secondary text */
   --modal: #F1F5F9;     /* Slightly darker than bg for modal contrast */
+  --modal-hover: #E2E8F0;
   --icon-bg: #E2E8F0;   /* Gentle light gray for icons */
   --icon: #1E293B;      /* Dark neutral icon color */
   --icon-bg-alt: #E5E7EB; /* Alternate subtle gray */
   --icon-alt: #3B82F6;  /* Accent icon (blue) */
   --border-line: #CBD5E1; /* Soft border (light gray-blue) */
   --nav-hover-bg: #CBD5E1;
+  --site-button: #334155;
+  --danger:        #EF4444;       /* red-500 */
+  --danger-hover:  #DC2626;       /* red-600 */
+  --danger-text:   #ffffff;       /* text on solid danger */
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #020817;
   --button: #3B82F6;
+  --button-hover: #3576DF;
   --button-text: #0F172A;
   --text: #F8FAFC;
   --text-sub: #94A3B8;
   --modal: #0F172A;
+  --modal-hover: #1E293B;
   --icon-bg: #08142E;
   --icon: #F8FAFC;
   --icon-bg-alt: #08142E;
   --icon-alt: #3B82F6;
   --border-line: #1E293B;
   --nav-hover-bg: #1E293B;
+  --site-button: #334155;
+  --danger:        #F87171;       /* red-400 */
+  --danger-hover:  #EF4444;       /* red-500 */
+  --danger-text:   #0F172A;       /* darker text contrasts on red-400/500 */
 }
 
 *, *::before, *::after {
@@ -47,6 +59,7 @@
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     background-color: var(--bg);
+    font-family: 'Fira Code', Consolas, 'Courier New', monospace;
   }
   /*
     5. Improve media defaults
@@ -89,19 +102,24 @@
   border: 1px solid var(--border-line);
   border-radius: 10px;
   background-color: var(--modal);
-  /* margin-top: 20px; */
+  padding: 5px;
   margin: 20px;
   font-size: 20px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
   
 }
 
 .laundryCard{
-  width: 85%;
-  
+ 
+  width: 100%;
   padding: 5px;
   font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   
   
 }
@@ -111,8 +129,8 @@
 }
 
 .laundryContainer:hover{
-  background-color: blue;
-  color: white;
+  background-color: var(--modal-hover);
+  cursor: pointer;
 }
 
 .laundryBasket{
@@ -213,28 +231,33 @@
 
 .popupForm{
   z-index: 30;
-  background-color: var(--bg);
+  background-color: var(--modal);
   color: var(--text);
   padding: 20px;
   border-radius: 10px;
   min-width: 250px;
-  max-width: 80%;
+  max-width: min(500px,80%);
+  
+  border: 1px solid var(--border-line);
 }
 
 .popupButtonContainer{
   display: flex;
   justify-content: space-evenly;
+  margin-top: 20px;
 
   
 }
 
 .popupButton{
   min-width: 60px;
-  border: 1px solid blue;
-  color: black;
+  border: 1px solid var(--border-line);
+  background-color: var(--button);
+  color: var(--button-text);
 
 }
 .popupButton:hover{
+  background-color: var(--button-hover);
   cursor: pointer;
 }
 .backdrop {
@@ -309,7 +332,8 @@
 
 .windowCardDelete{
   width: 15%;
-  padding: 10px;
+  padding-right: 5px;
+  padding-top: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -318,9 +342,20 @@
 }
 
 .windowCardDelete button{
-  background: none;
-  border: none;
+  background: var(--danger);
+  color: var(--danger-text);
+  border: 1px solid var(--border-line);
+  border-radius: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 18px;
+  
 
+}
+
+.windowCardDelete button:hover{
+  background-color: var(--danger-hover);
+  cursor: pointer;
 }
 
 .iconTheme{
@@ -384,3 +419,32 @@
   max-width: 70%;
 }
 
+.siteButton{
+  border: 1px solid var(--border-line);
+  width:fit-content;
+  padding: 20px;
+  background-color: var(--button);
+  color: var(--button-text);
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 18px;
+}
+.siteButton:hover{
+  background-color: var(--button-hover);
+  cursor: pointer;
+}
+
+.outletContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.laundryCardLimiter{
+  white-space: nowrap;       
+  overflow: hidden;          
+  text-overflow: ellipsis; 
+  display: inline-block;
+  max-width: 100%;
+}
