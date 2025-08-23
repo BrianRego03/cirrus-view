@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import PopUpAlert from "./PopUpAlert";
+import DeleteX from "./icons/DeleteX";
 
 
 
@@ -15,9 +16,12 @@ const LaundryBasket=({laundryArray,dropFunction})=>{
                 <div key={item.id} className="laundryContainer">
                     <div className="windowCardDelete">
                         <PopUpAlert
-                            buttonmsg="X"
+                            
                             alertmsg="Are you sure you want to delete this Laundry Plan?"
                             alertFunction={()=>{dropFunction(item.id)}}
+                            classPost="deletionButton"
+                            renderProp={(item)=><DeleteX className={item}/>}
+                            renderClass="iconTheme"
                             
                         />
                     </div>

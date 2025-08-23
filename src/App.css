@@ -355,23 +355,20 @@
   text-align: right;
 }
 
-.windowCardDelete button{
-  background: var(--danger);
+/* .windowCardDelete button{
+  background: var(--danger-text);
   color: var(--danger-text);
-  border: 1px solid var(--border-line);
-  border-radius: 12px;
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 18px;
+  border: none;
+
   
 
 }
 
 .windowCardDelete button:hover{
   background-color: var(--danger-hover);
-  border: 1px solid var(--border-line-hover);
+  
   cursor: pointer;
-}
+} */
 
 .iconTheme{
   color: var(--icon);
@@ -496,4 +493,15 @@
   font-size: 11px;
   text-align: center;
   word-wrap: break-word;
+}
+
+.deletionButton{
+  padding:0px;
+  border: none;
+  background-color: transparent;
+}
+
+.deletionButton svg:hover{
+  fill: var(--danger-hover);
+  cursor: pointer;
 }

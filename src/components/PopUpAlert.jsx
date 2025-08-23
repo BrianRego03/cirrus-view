@@ -1,11 +1,16 @@
 import { useState } from "react"
 
-const PopUpAlert=({buttonmsg,alertmsg,alertFunction})=>{
+const PopUpAlert=({buttonmsg,alertmsg,alertFunction,classPost,renderProp,renderClass})=>{
     const [popState,setPopState]=useState(false);
 
     return(
         <>
-            <button onClick={()=>{setPopState(true)}}>{buttonmsg}</button>
+            {buttonmsg?(
+                <button className={classPost} onClick={()=>{setPopState(true)}}>{buttonmsg}</button>
+            ):(
+                <button className={classPost} onClick={()=>{setPopState(true)}}>{renderProp(renderClass)}</button>
+            )}
+            
             {popState&&(<div className="backdrop">
                 <div className="popupForm">
                     <div>{alertmsg}</div>
