@@ -1,4 +1,5 @@
 import { useState } from "react"
+import DeleteX from "./icons/DeleteX";
 const API_URL = import.meta.env.VITE_API_URL;
 
 
@@ -103,12 +104,12 @@ const CreateWindowForm=({parentId})=>{
           <div className="backdrop">
             <form className="windowForm" onSubmit={windowSubmit}>
               <div className="closebuttonContainer">
-                <button
+                <button className="deletionButton"
                   onClick={() => {
                     setWindowFormState(!windowFormState);
                   }}
                 >
-                  X
+                  <DeleteX />
                 </button>
               </div>
               <legend>Create a Laundry Window</legend>
