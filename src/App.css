@@ -408,11 +408,11 @@
 .accountStatus{
   display: flex;
   
-  align-items: center;
+  align-items: flex-start;
 }
 .accountStatus div{
   /* margin-right: 20px; */
-  width: 140px;
+  width: 160px;
   text-align: center;
   display: flex;
   padding: 10px;
