@@ -19,6 +19,16 @@
   --danger:        #EF4444;       /* red-500 */
   --danger-hover:  #DC2626;       /* red-600 */
   --danger-text:   #ffffff;       /* text on solid danger */
+
+  --rain-cell: rgb(255, 185, 185);
+  --white-cell: rgb(250,250,255);
+  --purple-cell: rgb(241, 241, 253);
+  --header-column: #242083;
+  --header-column-text: #FFFFFF;
+  --header-row: #d4d4fa;
+  --header-row-text: #111827;
+  --table-border: rgb(146, 146, 146);
+
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -41,6 +51,20 @@
   --danger:        #F87171;       /* red-400 */
   --danger-hover:  #EF4444;       /* red-500 */
   --danger-text:   #0F172A;       /* darker text contrasts on red-400/500 */
+  
+  --rain-cell:        #792b3a;  
+  --rain-cell-text:   #FFDDE1;
+  --white-cell:       #060e19;  
+  --white-cell-text:  #DCE7F5;
+  --purple-cell:      #180f2a;  
+  --purple-cell-text: #DCE7F5;
+  --header-column:      #013631; 
+  --header-column-text: #ffffff; 
+  --header-row:         #066059;
+  --header-row-text:    #ffffff;
+  --table-border:       #dedfe0;
+
+  
 }
 
 *, *::before, *::after {
@@ -158,7 +182,7 @@
   overflow: auto;
   position: relative;
   max-width: 90vw;
-  border: 1px solid rgb(146, 146, 146);
+  border: 1px solid var(--table-border);
   border-collapse: collapse;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -173,7 +197,7 @@
 }
 
 .windowTable td,th{
-  border: 1px solid rgb(146, 146, 146);
+  border: 1px solid var(--table-border);
   padding: 10px;
 
   
@@ -201,23 +225,26 @@
 }
 
 .rainCell{
-  background-color: rgb(255, 185, 185);
+  background-color: var(--rain-cell);
   border: 1px solid #F19999;
+  color: var(--rain-cell-text);
 }
 
 .purpleCell{
-  background-color: rgb(241, 241, 253);
+  background-color: var(--purple-cell);
+  color: var(--purple-cell-text);
 }
 .whiteCell{
-  background-color: rgb(250,250,255);
+  background-color: var(--white-cell);
+  color: var(--white-cell-text);
 }
 .windowColumn{
-  background-color: #242083;
-  color: #FFFFFF;
+  background-color: var(--header-column);
+  color: var(--header-column-text);
 }
 .windowRow{
-  background-color: #d4d4fa;
-  color: #111827;
+  background-color: var(--header-row);
+  color: var(--header-row-text);
 }
 
 .windowTable img{
