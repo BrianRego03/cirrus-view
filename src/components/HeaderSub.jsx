@@ -7,8 +7,8 @@ export default function HeaderSub(){
 
     useEffect(()=>{
         function handleResize(){
-            setMobile(window.innerWidth<768);
-            if(window.innerWidth >= 768){
+            setMobile(window.innerWidth<1200);
+            if(window.innerWidth >= 1200){
                 setOpen(false);
             }
         }
