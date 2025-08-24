@@ -43,6 +43,10 @@ const LaundrySoloReport = ()=>{
 
               const data = await res.json();
               console.log(data);
+              if(data?.error){
+                
+                navigate('/laundry');
+              }
               setLaundryReport(data);
 
             } catch (err) {
