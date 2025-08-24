@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import CreateWindowForm from "./CreateWindowForm";
 import PopUpAlert from "./PopUpAlert";
+import DeleteX from "./icons/DeleteX";
 const API_URL = import.meta.env.VITE_API_URL;
 
 
@@ -118,9 +119,12 @@ const LaundrySolo = ()=>{
                 <div key={item.id} className="laundryContainer">
                   <div className="windowCardDelete">
                     <PopUpAlert
-                      buttonmsg="X"
+                      
                       alertmsg="Are you sure you want to delete this window?"
                       alertFunction={()=>{deleteWindowCall(item.id)}}
+                      classPost="deletionButton"
+                      renderProp={(item)=><DeleteX className={item}/>}
+                      renderClass="iconTheme"
                      
                     />
                   </div>

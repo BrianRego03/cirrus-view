@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext"
 import { useEffect, useState } from "react";
+import DeleteX from "./icons/DeleteX";
 const API_URL = import.meta.env.VITE_API_URL;
 
 
@@ -62,12 +63,12 @@ const CreateLaundry=()=>{
           <div className="backdrop">       
             <form className="windowForm" onSubmit={laundrySubmit}>
                 <div className="closebuttonContainer">
-                <button
+                <button className="deletionButton"
                     onClick={() => {
                     setLaundryFormState(!laundryFormState);
                     }}
                 >
-                    x
+                    <DeleteX />
                 </button>
                 </div>
                 <legend>Create new Laundry plan</legend>
