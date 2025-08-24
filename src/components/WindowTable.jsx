@@ -40,7 +40,9 @@ const WindowTable=({windowObject})=>{
                         return(
                         
                         <div className="windowFrame" key={windowIndex} >
-                            <div className="frameDivSticky"><b>{dayProvider(windowItem.date)}</b></div>
+                            <div className={windowItem.rain?("frameDivSticky tableDanger"):("frameDivSticky tableClear")}>
+                                <b>{dayProvider(windowItem.date)}</b>
+                            </div>
                             <table className="windowTable">
                             <thead>
 

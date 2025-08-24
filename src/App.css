@@ -19,6 +19,9 @@
   --danger:        #EF4444;       /* red-500 */
   --danger-hover:  #DC2626;       /* red-600 */
   --danger-text:   #ffffff;       /* text on solid danger */
+  --success: #22C55E;         /* green-500 */
+  --success-hover: #16A34A;   /* green-600 */
+  --success-text: #ffffff;    /* white on solid green */
 
   --rain-cell: rgb(255, 185, 185);
   --white-cell: rgb(250,250,255);
@@ -51,7 +54,10 @@
   --danger:        #F87171;       /* red-400 */
   --danger-hover:  #EF4444;       /* red-500 */
   --danger-text:   #0F172A;       /* darker text contrasts on red-400/500 */
-  
+  --success: #34D399;         /* emerald-400: pops on dark */
+  --success-hover: #10B981;   /* emerald-500 */
+  --success-text: #0F172A;
+
   --rain-cell:        #792b3a;  
   --rain-cell-text:   #FFDDE1;
   --white-cell:       #060e19;  
@@ -141,6 +147,7 @@
 .laundryCard{
  
   width: 100%;
+  height: 85%;
   padding: 5px;
   font-size: 20px;
   display: flex;
@@ -191,7 +198,7 @@
 .windowTable{
   border-spacing: 0px;
   border-collapse: collapse;
-  margin-top: 20px;
+
   max-width: 90vw;
   overflow: scroll;
 }
@@ -203,7 +210,17 @@
   
 }
 
-.frameSticky{
+.tableDanger{
+  background-color: var(--danger-hover);
+  color: var(--danger-text);
+}
+
+.tableClear{
+  background-color: var(--success-hover);
+  color: var(--success-text);
+}
+
+/* .frameSticky{
   position: sticky;
   left: 0;
   opacity: 1;
@@ -211,11 +228,13 @@
   box-shadow: 0 2px 0 0 #797979;
   z-index: 2;
   border-left: none;
-}
+
+} */
 
 .frameDivSticky{
   position: sticky;
   left: 0;  
+  padding: 10px;
 }
 
 .windowTableContainer{
