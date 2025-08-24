@@ -65,10 +65,26 @@ const LaundrySoloReport = ()=>{
         <div className="laundryBasket">
           {loadingLaundryReport ? (
             <>
-              <div>Laundry Name : {loadingLaundryReport.laundry.name}</div>
-              <div>Location : {loadingLaundryReport.location}</div>
-              <div>Forecast for this week : </div>
-              <div>{loadingLaundryReport.description}</div>
+              <table className="windowTable">
+                <tbody>
+                  <tr>
+                    <th>Name:</th>
+                    <td>
+                    {loadingLaundryReport.laundry.name}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Location:</th>
+                    <td>
+                    {loadingLaundryReport.location}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Forecast:</th>
+                    <td>{loadingLaundryReport.description}</td>
+                  </tr>
+                </tbody>
+              </table>
             </>
           ) : (
             <></>
