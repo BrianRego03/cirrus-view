@@ -28,15 +28,15 @@ const TripBasket=({laundryArray,dropFunction})=>{
                     </div>
                     <div className="laundryCard" onClick={()=>{navigate(`/laundry/${item.id}`)}}>
                         <div >{ item.name}</div>
-                        <div>{ item.date.split("T")[0] }</div>
-                        <div>
+                        <div>{ Essentials.formatDate(item.date) }</div>
+                        {/* <div>
                         {item.window?(Essentials.timeFormatter(
                             item.window.startWindowHour,
                             item.window.startWindowMin,
                             item.window.endWindowHour,
                             item.window.endWindowMin
                         )):("")}
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
