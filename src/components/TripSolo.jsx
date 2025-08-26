@@ -110,10 +110,12 @@ const TripSolo = ()=>{
             </table>
               
               <div className="laundryButtonContainer">
-                <div className="siteButton standardButton" 
+                {(loadingLaundrySolo.location.length && loadingLaundrySolo.window) ?
+                (<div className="siteButton standardButton" 
                 onClick={()=>{navigate(`/trip/${lid}/report`)}}>
-                  <span>Trip Report</span></div>
-                <CreateWindowForm parentId={lid} type="tripId" callbackFunction={tripRefresh}/>
+                  <span>Trip Report</span></div>):(<></>)}
+                {loadingLaundrySolo.window?(<></>):
+                (<CreateWindowForm parentId={lid} type="tripId" callbackFunction={tripRefresh}/>)}
                 <CreateLocationForm parentId={lid}  callbackFunction={tripRefresh}/>
               </div>
             </>
