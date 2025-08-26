@@ -1,8 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import { useCallback, useEffect, useState } from "react";
-import LaundryBasket from "./LaundryBasket";
-import CreateLaundry from "./CreateLaundry";
 import CreateTrip from "./CreateTrip";
 import TripBasket from "./TripBasket";
 const API_URL=  import.meta.env.VITE_API_URL;
@@ -12,7 +10,7 @@ const API_URL=  import.meta.env.VITE_API_URL;
 const Trip = ()=>{
     const {user}= useAuth();
     const navigate = useNavigate();
-    const [loadingLaundry,setLaundry]=useState(null);
+    const [loadingTrip,setTrip]=useState(null);
 
     const fetchAllLaundry= useCallback(() => {
           (async () => {
@@ -25,8 +23,8 @@ const Trip = ()=>{
               );
 
               const data = await res.json();
-              console.log(data);
-              setLaundry(data);
+            //   console.log(data);
+              setTrip(data);
 
             } catch (err) {
               console.error(err);
@@ -42,10 +40,10 @@ const Trip = ()=>{
         fetchAllLaundry();
     },[fetchAllLaundry]);
 
-    const deleteLaundryCall=async(laundryID)=>{
+    const deleteTripCall=async(tripID)=>{
         try {
               const res = await fetch(
-                `${API_URL}/laundry/${laundryID}`,
+                `${API_URL}/trip/${tripID}`,
                 {
                 method:'DELETE',
                 credentials:"include",
@@ -56,8 +54,8 @@ const Trip = ()=>{
               );
 
               const data = await res.json();
-              console.log(data);
-              setLaundry(data);
+            //   console.log(data);
+              setTrip(data);
 
             } catch (err) {
               console.error(err);
@@ -72,7 +70,7 @@ const Trip = ()=>{
     return (
       <>
         <CreateTrip />
-        <TripBasket laundryArray={loadingLaundry} dropFunction={deleteLaundryCall}/>
+        <TripBasket laundryArray={loadingTrip} dropFunction={deleteTripCall}/>
 
 
 

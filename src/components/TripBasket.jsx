@@ -18,7 +18,7 @@ const TripBasket=({laundryArray,dropFunction})=>{
                     <div className="windowCardDelete">
                         <PopUpAlert
                             
-                            alertmsg="Are you sure you want to delete this\n Day Trip?"
+                            alertmsg="Are you sure you want to delete this Day Trip?"
                             alertFunction={()=>{dropFunction(item.id)}}
                             classPost="deletionButton"
                             renderProp={(item)=><DeleteX className={item}/>}
