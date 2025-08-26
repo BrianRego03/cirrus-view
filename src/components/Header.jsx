@@ -8,6 +8,8 @@ import AccountIcon from './icons/AccountIcon';
 import SignUpIcon from './icons/SignUpIcon';
 import LoginIcon from './icons/LogInIcon';
 import LaundryIcon from './icons/LaundryIcon';
+import Trip from './icons/Trip';
+import Stars from './icons/Stars';
 
 
 const Header=()=>{
@@ -34,6 +36,18 @@ const Header=()=>{
           </div>
           <div className="headerRight">
             <div className="accountStatus">
+              <div onClick={()=>{navigate("/laundry")}}>
+                <button className="themeButtonContainer" >
+                  <Stars className="iconTheme" />
+                </button>
+                Stargazing
+              </div>  
+              <div onClick={()=>{navigate("/laundry")}}>
+                <button className="themeButtonContainer" >
+                  <Trip className="iconTheme" />
+                </button>
+                Trip
+              </div>  
               <div onClick={()=>{navigate("/laundry")}}>
                 <button className="themeButtonContainer" >
                   <LaundryIcon className="iconTheme" />
