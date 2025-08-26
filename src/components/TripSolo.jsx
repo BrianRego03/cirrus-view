@@ -1,10 +1,11 @@
 import { useParams, useNavigate } from "react-router-dom";
 // import { useAuth } from "./AuthContext";
 import { useCallback, useEffect, useState } from "react";
-import CreateWindowForm from "./CreateWindowForm";
 import PopUpAlert from "./PopUpAlert";
 import DeleteX from "./icons/DeleteX";
 const API_URL = import.meta.env.VITE_API_URL;
+import Essentials from "../utils/Essentials";
+import CreateLocationForm from "./CreateLocationForm";
 
 
 
@@ -14,25 +15,7 @@ const TripSolo = ()=>{
     const navigate = useNavigate();
     const {id:lid}= useParams();
 
-    const timeParsinator=(num)=>{
-        if(parseInt(num)===0){
-            return "00";
-        }else if((parseInt(num)>0) && (parseInt(num)<10)){
-            return ("0" + num.toString());
-        }else return (num.toString());
-    }
 
-    const timeFormatter=(sth,stm,edh,edm)=>{
-        let stringOfTime =
-          timeParsinator(sth) +
-          ":" +
-          timeParsinator(stm) +
-          " ---> " +
-          timeParsinator(edh) +
-          ":" +
-          timeParsinator(edm);
-        return stringOfTime;
-    }
 
     const fetchLaundrySolo= useCallback(() => {
           (async () => {
@@ -63,10 +46,10 @@ const TripSolo = ()=>{
         fetchLaundrySolo();
     },[fetchLaundrySolo]);
 
-    const deleteWindowCall=async(windowID)=>{
+    const deleteLocationCall=async(windowID)=>{
         try {
               const res = await fetch(
-                `${API_URL}/windows/${windowID}`,
+                `${API_URL}/location/${windowID}`,
                 {
                 method:'DELETE',
                 credentials:"include",
@@ -95,13 +78,35 @@ const TripSolo = ()=>{
         <div className="laundryBasket">
           {loadingLaundrySolo ? (
             <>
-              <div>Laundry Name : {loadingLaundrySolo.name}</div>
-              <div>Location : {loadingLaundrySolo.location}</div>
+            <table className="windowTable">
+                <tbody>
+                    <tr>
+                        <th>Trip Name</th>
+                        <td>{loadingLaundrySolo.name}</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{Essentials.formatDate(loadingLaundrySolo.date)}</td>
+                    </tr>
+                    <tr>
+                        <th>Time</th>
+                        <td>{loadingLaundrySolo.window?
+                            Essentials.timeFormatter(loadingLaundrySolo.window.startWindowHour,
+                            loadingLaundrySolo.window.startWindowMin,
+                            loadingLaundrySolo.window.endWindowHour,
+                            loadingLaundrySolo.window.endWindowMin
+                            ):
+                            "No window set"}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+              
               <div className="laundryButtonContainer">
                 <div className="siteButton standardButton" 
                 onClick={()=>{navigate(`/laundry/${lid}/report`)}}>
                   <span>Weather Report</span></div>
-                <CreateWindowForm parentId={lid}/>
+                <CreateLocationForm parentId={lid}/>
               </div>
             </>
           ) : (
@@ -117,15 +122,15 @@ const TripSolo = ()=>{
           className="laundryBasketModal"
 
         >
-          {loadingLaundrySolo?.windows ? (
-            loadingLaundrySolo.windows.map((item, index) => {
+          {loadingLaundrySolo?.location ? (
+            loadingLaundrySolo.location.map((item, index) => {
               return (
                 <div key={item.id} className="laundryContainer">
                   <div className="windowCardDelete">
                     <PopUpAlert
                       
-                      alertmsg="Are you sure you want to delete this window?"
-                      alertFunction={()=>{deleteWindowCall(item.id)}}
+                      alertmsg="Are you sure you want to delete this location?"
+                      alertFunction={()=>{deleteLocationCall(item.id)}}
                       classPost="deletionButton"
                       renderProp={(item)=><DeleteX className={item}/>}
                       renderClass="iconTheme"
@@ -133,17 +138,10 @@ const TripSolo = ()=>{
                     />
                   </div>
                   <div className="laundryCard">
-                    <div>{index + 1 + ") " + item.startWindowDay + " "}</div>
-                    <div>
-                      {timeFormatter(
-                        item.startWindowHour,
-                        item.startWindowMin,
-                        item.endWindowHour,
-                        item.endWindowMin
-                      )}
-                    </div>
+                    <div className="divEllipsis">{ item.name }</div>
 
-                    <div>{item.location}</div>
+
+
                   </div>
 
                 </div>
