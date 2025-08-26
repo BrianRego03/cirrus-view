@@ -132,6 +132,10 @@
     text-align: center;
 }
 
+html {
+  overflow-y: scroll; /* Always show scrollbar space */
+}
+
 .outletContainer{
   margin-top: 60px;
 }
