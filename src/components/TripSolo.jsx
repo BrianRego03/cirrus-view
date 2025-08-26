@@ -6,6 +6,7 @@ import DeleteX from "./icons/DeleteX";
 const API_URL = import.meta.env.VITE_API_URL;
 import Essentials from "../utils/Essentials";
 import CreateLocationForm from "./CreateLocationForm";
+import CreateWindowForm from "./CreateWindowForm";
 
 
 
@@ -69,6 +70,11 @@ const TripSolo = ()=>{
             }
     }
 
+    const tripRefresh=(refreshData)=>{
+      setLaundrySolo(refreshData);
+      
+    }
+
 
 
     
@@ -106,6 +112,7 @@ const TripSolo = ()=>{
                 <div className="siteButton standardButton" 
                 onClick={()=>{navigate(`/laundry/${lid}/report`)}}>
                   <span>Weather Report</span></div>
+                <CreateWindowForm parentId={lid} type="tripId" callbackFunction={tripRefresh}/>
                 <CreateLocationForm parentId={lid}/>
               </div>
             </>

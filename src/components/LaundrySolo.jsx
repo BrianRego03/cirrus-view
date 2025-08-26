@@ -86,6 +86,11 @@ const LaundrySolo = ()=>{
             }
     }
 
+    const laundryRefresh=(refreshData)=>{
+      setLaundrySolo(refreshData);
+      
+    }
+
 
 
     
@@ -101,7 +106,8 @@ const LaundrySolo = ()=>{
                 <div className="siteButton standardButton" 
                 onClick={()=>{navigate(`/laundry/${lid}/report`)}}>
                   <span>Weather Report</span></div>
-                <CreateWindowForm parentId={lid}/>
+                <CreateWindowForm parentId={lid} type="laundryId" 
+                callbackFunction={laundryRefresh}/>
               </div>
             </>
           ) : (

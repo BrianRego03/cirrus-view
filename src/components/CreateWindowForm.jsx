@@ -1,9 +1,10 @@
 import { useState } from "react"
 import DeleteX from "./icons/DeleteX";
+import { useNavigate } from "react-router-dom";
 const API_URL = import.meta.env.VITE_API_URL;
 
 
-const CreateWindowForm=({parentId})=>{
+const CreateWindowForm=({parentId,type,callbackFunction})=>{
     const [windowFormState,setWindowFormState]=useState(false);
 
     const [startTime,setStartTime]=useState("");
@@ -17,6 +18,8 @@ const CreateWindowForm=({parentId})=>{
     const [edMin,setEdMin]=useState("");
     const [startError,setStartError]=useState("");
     const [endError,setEndError]=useState("");
+
+    const navigate = useNavigate();
 
     const dayArray = [
         "Sunday",
@@ -84,6 +87,15 @@ const CreateWindowForm=({parentId})=>{
             if(!response.ok)throw new Error('Submission failed');
             const result = await response.json();
             console.log(result);
+            setWindowFormState(!windowFormState);
+            if(result.laundryId){
+
+              callbackFunction(result);
+
+            }else if(result.tripId){
+              callbackFunction(result)
+            }
+            // console.log(result);
         }catch(err){
             console.log(err);
         }
@@ -98,7 +110,7 @@ const CreateWindowForm=({parentId})=>{
             setWindowFormState(!windowFormState);
           }}
         >
-          <span>Add new Laundry window</span>
+          <span>Add new Time window</span>
         </div>
         {windowFormState && (
           <div className="backdrop">
@@ -112,16 +124,17 @@ const CreateWindowForm=({parentId})=>{
                   <DeleteX />
                 </button>
               </div>
-              <legend>Create a Laundry Window</legend>
+              <legend>Create a Time Window</legend>
               <input type="hidden" name="swDay"></input>
+              <input type="hidden" name="edDay"></input>
               <input type="hidden" name="swHour"></input>
               <input type="hidden" name="swMin"></input>
               <input type="hidden" name="edDay"></input>
               <input type="hidden" name="edHour"></input>
               <input type="hidden" name="edMin"></input>
-              <input type="hidden" name="wtype" value="laundryId"></input>
+              <input type="hidden" name="wtype" value={type}></input>
               <input type="hidden" name="parentid" value={+parentId}></input>
-              <div>
+              {(type==="laundryId")?(<div>
                 <div>
                   <label>Day:</label>
                 </div>
@@ -136,7 +149,7 @@ const CreateWindowForm=({parentId})=>{
                     return <option value={item} key={index}>{item}</option>;
                   })}
                 </select>
-              </div>
+              </div>):("")}
               <div>
                 <div>
                   <label>Start Time:</label>

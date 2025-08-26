@@ -44,6 +44,7 @@ const CreateTrip=()=>{
             });
             if(!response.ok)throw new Error('Submission failed');
             const result = await response.json();
+            navigate(`/trip/${result.id}`)
             console.log(result);
         }catch(err){
             console.log(err);
