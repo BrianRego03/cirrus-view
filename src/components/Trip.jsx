@@ -3,6 +3,7 @@ import { useAuth } from "./AuthContext";
 import { useCallback, useEffect, useState } from "react";
 import LaundryBasket from "./LaundryBasket";
 import CreateLaundry from "./CreateLaundry";
+import TripBasket from "./TripBasket";
 const API_URL=  import.meta.env.VITE_API_URL;
 
 
@@ -16,7 +17,7 @@ const Trip = ()=>{
           (async () => {
             try {
               const res = await fetch(
-                `http://localhost:3000/laundry`,
+                `http://localhost:3000/trip`,
                 {
                   credentials: "include",
                 }
@@ -69,8 +70,8 @@ const Trip = ()=>{
 
     return (
       <>
-        <CreateLaundry />
-        <LaundryBasket laundryArray={loadingLaundry} dropFunction={deleteLaundryCall}/>
+        {/* <CreateLaundry /> */}
+        <TripBasket laundryArray={loadingLaundry} dropFunction={deleteLaundryCall}/>
 
 
 
