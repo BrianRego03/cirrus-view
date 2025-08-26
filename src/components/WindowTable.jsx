@@ -1,7 +1,7 @@
 
 
 const WindowTable=({windowObject})=>{
-
+    console.log("hey");
     const timeParsinator=(num)=>{
         if(parseInt(num)===0){
             return "00";
@@ -37,20 +37,32 @@ const WindowTable=({windowObject})=>{
             <div className="windowTableContainer">
                 {
                     windowObject.map((windowItem,windowIndex)=>{
+                        console.log(windowItem);
+                        console.log(windowIndex);
                         return(
                         
                         <div className="windowFrame" key={windowIndex} >
                             <div className={windowItem.rain?("frameDivSticky tableDanger"):("frameDivSticky tableClear")}>
-                                <b>{dayProvider(windowItem.date)}</b>
+                                
+                                {windowItem.tripLocation?
+                                (<b>{windowItem.tripLocation.length<30?
+                                    windowItem.tripLocation:
+                                    windowItem.tripLocation.slice(0,Math.min(windowItem.tripLocation.length,27))+"..."}</b>):
+                                (<b>{dayProvider(windowItem.date)}</b>)}
                             </div>
-                            <table className="windowTable">
+                            <table className="windowTable reportTable">
                             <thead>
 
                                 <tr>
                                     <th className="frameSticky windowColumn">Time</th>
                                     {windowItem.windowHours.map((item,index)=>{
-                                        return (
+                                        return item.hour? (
                                             <th key={index} className="windowColumn">{timeFormatter(item.hour,item.minute)}</th>
+                                        ):(
+                                            <th key={index} className="windowColumn">
+                                                {timeFormatter(+(item.datetime.split(":")[0]),+(item.datetime.split(":")[1]))}
+                                            </th>
+
                                         )
                                     })}
                                 </tr>
@@ -63,8 +75,9 @@ const WindowTable=({windowObject})=>{
                                     {windowItem.windowHours.map((item,index)=>{
                                         return (
                                             <td key={index} 
-                                            className={item.rain?"rainCell":((index%2)?"purpleCell":"whiteCell")}>
-                                                {(item.rain)?"Rain":"Clear"}
+                                            className={(item.rain || item.precip>=0.5)?
+                                            "rainCell":((index%2)?"purpleCell":"whiteCell")}>
+                                                {(item.rain || item.precip>=0.5)?"Rain":"Clear"}
                                             </td>
                                         )
                                     })}
@@ -75,7 +88,8 @@ const WindowTable=({windowObject})=>{
                                     {windowItem.windowHours.map((item,index)=>{
                                         return (
                                             <td key={index}  
-                                            className={item.rain?"rainCell":((index%2)?"purpleCell":"whiteCell")}>
+                                            className={(item.rain || item.precip>=0.5)?
+                                            "rainCell":((index%2)?"purpleCell":"whiteCell")}>
                                                 {item.precip}
                                             </td>
                                         )
@@ -87,7 +101,8 @@ const WindowTable=({windowObject})=>{
                                     {windowItem.windowHours.map((item,index)=>{
                                         return (
                                             <td key={index}  
-                                            className={item.rain?"rainCell":((index%2)?"purpleCell":"whiteCell")}>
+                                            className={(item.rain || item.precip>=0.5)?
+                                            "rainCell":((index%2)?"purpleCell":"whiteCell")}>
                                                 {item.temp}°C
                                             </td>
                                         )
@@ -99,7 +114,7 @@ const WindowTable=({windowObject})=>{
                                     {windowItem.windowHours.map((item,index)=>{
                                         return (
                                             <td key={index}  
-                                            className={item.rain?"rainCell":((index%2)?"purpleCell":"whiteCell")}>
+                                            className={(item.rain || item.precip>=0.5)?"rainCell":((index%2)?"purpleCell":"whiteCell")}>
                                                 <img 
                                                 src={`https://raw.githubusercontent.com/visualcrossing/WeatherIcons/refs/heads/main/PNG/2nd%20Set%20-%20Color/${item.icon}.png`}>
 

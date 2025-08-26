@@ -111,8 +111,8 @@ const TripSolo = ()=>{
               
               <div className="laundryButtonContainer">
                 <div className="siteButton standardButton" 
-                onClick={()=>{navigate(`/laundry/${lid}/report`)}}>
-                  <span>Weather Report</span></div>
+                onClick={()=>{navigate(`/trip/${lid}/report`)}}>
+                  <span>Trip Report</span></div>
                 <CreateWindowForm parentId={lid} type="tripId" callbackFunction={tripRefresh}/>
                 <CreateLocationForm parentId={lid}  callbackFunction={tripRefresh}/>
               </div>

@@ -225,6 +225,11 @@ html {
   
 }
 
+.reportTable td,th{
+
+  width: 108px;
+}
+
 .tableDanger{
   background-color: var(--danger-hover);
   color: var(--danger-text);
@@ -235,7 +240,7 @@ html {
   color: var(--success-text);
 }
 
-/* .frameSticky{
+.frameSticky{
   position: sticky;
   left: 0;
   opacity: 1;
@@ -244,7 +249,7 @@ html {
   z-index: 2;
   border-left: none;
 
-} */
+}
 
 .frameDivSticky{
   position: sticky;
