@@ -8,7 +8,7 @@ import AccountIcon from './icons/AccountIcon';
 import SignUpIcon from './icons/SignUpIcon';
 import LoginIcon from './icons/LogInIcon';
 import LaundryIcon from './icons/LaundryIcon';
-import Trip from './icons/Trip';
+import TripIcon from './icons/TripIcon';
 import Stars from './icons/Stars';
 
 
@@ -42,9 +42,9 @@ const Header=()=>{
                 </button>
                 Stargazing
               </div>  
-              <div onClick={()=>{navigate("/laundry")}}>
+              <div onClick={()=>{navigate("/trip")}}>
                 <button className="themeButtonContainer" >
-                  <Trip className="iconTheme" />
+                  <TripIcon className="iconTheme" />
                 </button>
                 Day Trip
               </div>  

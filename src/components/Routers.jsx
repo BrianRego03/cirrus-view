@@ -7,6 +7,7 @@ import Laundry from "./Laundry";
 import LaundrySolo from "./LaundrySolo";
 import LaundrySoloReport from "./LaundrySoloReport";
 import CreateLaundry from "./CreateLaundry";
+import Trip from "./Trip";
 
 
 const router = createBrowserRouter([
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
             {path:"/laundry/:id", element: <LaundrySolo />},
             {path:"/laundry/:id/report", element: <LaundrySoloReport />},
             {path:"/createLaundry", element: <CreateLaundry />},
+            {path:"/trip", element: <Trip />},
         ],
     },
     {

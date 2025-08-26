@@ -1,4 +1,4 @@
-export default function Trip({ className }) {
+export default function TripIcon({ className }) {
   return (
     <>
 
