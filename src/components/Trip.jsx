@@ -3,6 +3,7 @@ import { useAuth } from "./AuthContext";
 import { useCallback, useEffect, useState } from "react";
 import LaundryBasket from "./LaundryBasket";
 import CreateLaundry from "./CreateLaundry";
+import CreateTrip from "./CreateTrip";
 import TripBasket from "./TripBasket";
 const API_URL=  import.meta.env.VITE_API_URL;
 
@@ -70,7 +71,7 @@ const Trip = ()=>{
 
     return (
       <>
-        {/* <CreateLaundry /> */}
+        <CreateTrip />
         <TripBasket laundryArray={loadingLaundry} dropFunction={deleteLaundryCall}/>
 
 
