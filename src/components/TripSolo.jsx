@@ -71,6 +71,7 @@ const TripSolo = ()=>{
     }
 
     const tripRefresh=(refreshData)=>{
+      console.log(refreshData);
       setLaundrySolo(refreshData);
       
     }
@@ -113,7 +114,7 @@ const TripSolo = ()=>{
                 onClick={()=>{navigate(`/laundry/${lid}/report`)}}>
                   <span>Weather Report</span></div>
                 <CreateWindowForm parentId={lid} type="tripId" callbackFunction={tripRefresh}/>
-                <CreateLocationForm parentId={lid}/>
+                <CreateLocationForm parentId={lid}  callbackFunction={tripRefresh}/>
               </div>
             </>
           ) : (

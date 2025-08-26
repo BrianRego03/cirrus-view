@@ -3,7 +3,7 @@ import DeleteX from "./icons/DeleteX";
 const API_URL = import.meta.env.VITE_API_URL;
 
 
-const CreateLocationForm=({parentId})=>{
+const CreateLocationForm=({parentId,callbackFunction})=>{
     const [windowFormState,setWindowFormState]=useState(false);
 
     const [place,setPlace]=useState('');
@@ -32,6 +32,9 @@ const CreateLocationForm=({parentId})=>{
             });
             if(!response.ok)throw new Error('Submission failed');
             const result = await response.json();
+            callbackFunction(result);
+            setWindowFormState(!windowFormState);
+
             console.log(result);
         }catch(err){
             console.log(err);

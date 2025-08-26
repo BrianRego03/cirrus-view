@@ -134,6 +134,7 @@
 
 html {
   overflow-y: scroll; /* Always show scrollbar space */
+  /* font-size: 20px; */
 }
 
 .outletContainer{
@@ -472,11 +473,13 @@ html {
 }
 .accountStatus div{
   /* margin-right: 20px; */
-  width: 140px;
+  width: 160px;
   text-align: center;
   display: flex;
   padding: 10px;
   align-items: center;  
+  /* font-size: 0.9rem; */
+  font-size: 18px;
 }
 
 .accountStatus div:hover{
