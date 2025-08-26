@@ -1,11 +1,11 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import { useAuth } from "./AuthContext";
+import { Outlet } from "react-router-dom";
+// import { useAuth } from "./AuthContext";
 import HeaderSub from "./HeaderSub";
 
 
 const Dashboard = ()=>{
-    const {user}= useAuth();
-    const navigate =useNavigate();
+    // const {user}= useAuth();
+    // const navigate =useNavigate();
     return (
       <>
         <HeaderSub />

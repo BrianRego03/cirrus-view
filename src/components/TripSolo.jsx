@@ -130,7 +130,7 @@ const TripSolo = ()=>{
 
         >
           {loadingLaundrySolo?.location ? (
-            loadingLaundrySolo.location.map((item, index) => {
+            loadingLaundrySolo.location.map((item) => {
               return (
                 <div key={item.id} className="laundryContainer">
                   <div className="windowCardDelete">

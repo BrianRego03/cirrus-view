@@ -12,7 +12,7 @@ const TripBasket=({laundryArray,dropFunction})=>{
     return(
         <div className="laundryBasketModal" >
             {(Array.isArray(laundryArray))?
-                laundryArray.map((item,index)=>{
+                laundryArray.map((item)=>{
                     return(
                 <div key={item.id} className="laundryContainer">
                     <div className="windowCardDelete">

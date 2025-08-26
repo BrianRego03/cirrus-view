@@ -1,6 +1,5 @@
 import { useState } from "react"
 import DeleteX from "./icons/DeleteX";
-import { useNavigate } from "react-router-dom";
 const API_URL = import.meta.env.VITE_API_URL;
 
 
@@ -19,7 +18,6 @@ const CreateWindowForm=({parentId,type,callbackFunction})=>{
     const [startError,setStartError]=useState("");
     const [endError,setEndError]=useState("");
 
-    const navigate = useNavigate();
 
     const dayArray = [
         "Sunday",
@@ -139,7 +137,7 @@ const CreateWindowForm=({parentId,type,callbackFunction})=>{
                   <label>Day:</label>
                 </div>
 
-                <select
+                <select value={windowDay}
                   onChange={(e) => {
                     handleWindowDay(e.target.value);
                   }}

@@ -2,7 +2,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import { useCallback, useEffect, useState } from "react";
 import LaundryBasket from "./LaundryBasket";
-import CreateLaundry from "./CreateLaundry";
+import CreateLaundry from "./CreateLaundryForm";
 const API_URL=  import.meta.env.VITE_API_URL;
 
 
