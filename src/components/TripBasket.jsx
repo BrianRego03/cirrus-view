@@ -26,7 +26,7 @@ const TripBasket=({laundryArray,dropFunction})=>{
                             
                         />
                     </div>
-                    <div className="laundryCard" onClick={()=>{navigate(`/laundry/${item.id}`)}}>
+                    <div className="laundryCard" onClick={()=>{navigate(`/trip/${item.id}`)}}>
                         <div >{ item.name}</div>
                         <div>{ Essentials.formatDate(item.date) }</div>
                         {/* <div>
