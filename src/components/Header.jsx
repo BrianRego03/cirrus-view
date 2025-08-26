@@ -46,7 +46,7 @@ const Header=()=>{
                 <button className="themeButtonContainer" >
                   <Trip className="iconTheme" />
                 </button>
-                Trip
+                Day Trip
               </div>  
               <div onClick={()=>{navigate("/laundry")}}>
                 <button className="themeButtonContainer" >
