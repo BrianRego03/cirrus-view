@@ -5,7 +5,7 @@ import DeleteX from "./icons/DeleteX";
 const API_URL = import.meta.env.VITE_API_URL;
 
 
-const CreateLaundry=()=>{
+const CreateLaundry=({callbackFunction})=>{
     const [laundryFormState,setLaundryFormState]=useState(false);
 
     const {user,loading}= useAuth();
@@ -40,6 +40,8 @@ const CreateLaundry=()=>{
             if(!response.ok)throw new Error('Submission failed');
             const result = await response.json();
             console.log(result);
+            setLaundryFormState(!laundryFormState);
+            callbackFunction(result);
         }catch(err){
             console.log(err);
         }

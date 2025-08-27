@@ -69,7 +69,7 @@ const Laundry = ()=>{
 
     return (
       <>
-        <CreateLaundry />
+        <CreateLaundry callbackFunction={setLaundry}/>
         <LaundryBasket laundryArray={loadingLaundry} dropFunction={deleteLaundryCall}/>
 
 
