@@ -8,6 +8,7 @@ import Essentials from "../utils/Essentials";
 import CreateLocationForm from "./CreateLocationForm";
 import CreateWindowForm from "./CreateWindowForm";
 import EditIcon from "./icons/EditIcon";
+import UpdateTrip from "./UpdateTrip";
 
 
 
@@ -99,8 +100,9 @@ const TripSolo = ()=>{
                         <div className="dateAligner">
                           {Essentials.formatDate(loadingLaundrySolo.date)}
                         </div>
+                        
 
-                        <div className="windowCardEdit">
+                        {/* <div className="windowCardEdit">
                           <PopUpAlert
                             alertmsg="Are you sure you want to delete this location?"
                             alertFunction={() => {
@@ -110,7 +112,7 @@ const TripSolo = ()=>{
                             renderProp={(item) => <EditIcon className={item} />}
                             renderClass="iconTheme"
                           />{" "}
-                        </div>
+                        </div> */}
                       </div>
                     </td>
                   </tr>
@@ -125,6 +127,14 @@ const TripSolo = ()=>{
                             loadingLaundrySolo.window.endWindowMin
                           )
                         : "No window set"}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Actions</th>
+                    <td>
+                      <div className="dateContainer">
+                        <UpdateTrip tripItem={loadingLaundrySolo} stateUpdater={setLaundrySolo}/>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
