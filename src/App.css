@@ -421,21 +421,31 @@ html {
   text-align: right;
 }
 
-/* .windowCardDelete button{
-  background: var(--danger-text);
-  color: var(--danger-text);
-  border: none;
+.windowCardEdit{
+  width: 15%;
+  padding-right: 5px;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: right;
+  cursor: pointer;
+  margin-left: 10px;
+}
 
-  
+.dateAligner{
+  vertical-align: middle;
 
 }
 
-.windowCardDelete button:hover{
-  background-color: var(--danger-hover);
-  
-  cursor: pointer;
-} */
-
+.dateContainer{
+  display: flex;
+  align-items: center;
+  border: none;
+  justify-content: space-evenly;
+  width: 100%;
+}
 .iconTheme{
   color: var(--icon);
   height: 25px;
@@ -563,17 +573,21 @@ html {
   word-wrap: break-word;
 }
 
-.deletionButton{
+.deletionButton,.editButton{
   padding:0px;
   border: none;
   background-color: transparent;
 
 }
 
-.deletionButton svg{
+.deletionButton svg, .editButton svg{
   height: 30px;
   width: 30px;
 
+}
+
+.editButton svg:hover{
+  cursor: pointer;
 }
 
 .deletionButton svg:hover{

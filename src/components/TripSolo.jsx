@@ -7,6 +7,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 import Essentials from "../utils/Essentials";
 import CreateLocationForm from "./CreateLocationForm";
 import CreateWindowForm from "./CreateWindowForm";
+import EditIcon from "./icons/EditIcon";
 
 
 
@@ -85,38 +86,77 @@ const TripSolo = ()=>{
         <div className="laundryBasket">
           {loadingLaundrySolo ? (
             <>
-            <table className="windowTable">
+              <table className="windowTable">
                 <tbody>
-                    <tr>
-                        <th>Trip Name</th>
-                        <td>{loadingLaundrySolo.name}</td>
-                    </tr>
-                    <tr>
-                        <th>Date</th>
-                        <td>{Essentials.formatDate(loadingLaundrySolo.date)}</td>
-                    </tr>
-                    <tr>
-                        <th>Time</th>
-                        <td>{loadingLaundrySolo.window?
-                            Essentials.timeFormatter(loadingLaundrySolo.window.startWindowHour,
+                  <tr>
+                    <th>Trip Name</th>
+                    <td>{loadingLaundrySolo.name}</td>
+                  </tr>
+                  <tr>
+                    <th>Date</th>
+                    <td>
+                      <div className="dateContainer">
+                        <div className="dateAligner">
+                          {Essentials.formatDate(loadingLaundrySolo.date)}
+                        </div>
+
+                        <div className="windowCardEdit">
+                          <PopUpAlert
+                            alertmsg="Are you sure you want to delete this location?"
+                            alertFunction={() => {
+                              updateTripDate(item.id);
+                            }}
+                            classPost="editButton"
+                            renderProp={(item) => <EditIcon className={item} />}
+                            renderClass="iconTheme"
+                          />{" "}
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Time</th>
+                    <td>
+                      {loadingLaundrySolo.window
+                        ? Essentials.timeFormatter(
+                            loadingLaundrySolo.window.startWindowHour,
                             loadingLaundrySolo.window.startWindowMin,
                             loadingLaundrySolo.window.endWindowHour,
                             loadingLaundrySolo.window.endWindowMin
-                            ):
-                            "No window set"}
-                        </td>
-                    </tr>
+                          )
+                        : "No window set"}
+                    </td>
+                  </tr>
                 </tbody>
-            </table>
-              
+              </table>
+
               <div className="laundryButtonContainer">
-                {(loadingLaundrySolo.location.length && loadingLaundrySolo.window) ?
-                (<div className="siteButton standardButton" 
-                onClick={()=>{navigate(`/trip/${lid}/report`)}}>
-                  <span>Trip Report</span></div>):(<></>)}
-                {loadingLaundrySolo.window?(<></>):
-                (<CreateWindowForm parentId={lid} type="tripId" callbackFunction={tripRefresh}/>)}
-                <CreateLocationForm parentId={lid}  callbackFunction={tripRefresh}/>
+                {loadingLaundrySolo.location.length &&
+                loadingLaundrySolo.window ? (
+                  <div
+                    className="siteButton standardButton"
+                    onClick={() => {
+                      navigate(`/trip/${lid}/report`);
+                    }}
+                  >
+                    <span>Trip Report</span>
+                  </div>
+                ) : (
+                  <></>
+                )}
+                {loadingLaundrySolo.window ? (
+                  <></>
+                ) : (
+                  <CreateWindowForm
+                    parentId={lid}
+                    type="tripId"
+                    callbackFunction={tripRefresh}
+                  />
+                )}
+                <CreateLocationForm
+                  parentId={lid}
+                  callbackFunction={tripRefresh}
+                />
               </div>
             </>
           ) : (
@@ -124,36 +164,25 @@ const TripSolo = ()=>{
           )}
         </div>
 
-
-
-        
-
-        <div
-          className="laundryBasketModal"
-
-        >
+        <div className="laundryBasketModal">
           {loadingLaundrySolo?.location ? (
             loadingLaundrySolo.location.map((item) => {
               return (
                 <div key={item.id} className="laundryContainer">
                   <div className="windowCardDelete">
                     <PopUpAlert
-                      
                       alertmsg="Are you sure you want to delete this location?"
-                      alertFunction={()=>{deleteLocationCall(item.id)}}
+                      alertFunction={() => {
+                        deleteLocationCall(item.id);
+                      }}
                       classPost="deletionButton"
-                      renderProp={(item)=><DeleteX className={item}/>}
+                      renderProp={(item) => <DeleteX className={item} />}
                       renderClass="iconTheme"
-                     
                     />
                   </div>
                   <div className="laundryCard">
-                    <div className="divEllipsis">{ item.name }</div>
-
-
-
+                    <div className="divEllipsis">{item.name}</div>
                   </div>
-
                 </div>
               );
             })
@@ -161,8 +190,6 @@ const TripSolo = ()=>{
             <></>
           )}
         </div>
-
-        
       </>
     );
 }
