@@ -36,12 +36,12 @@ const Header=()=>{
           </div>
           <div className="headerRight">
             <div className="accountStatus">
-              <div onClick={()=>{navigate("/laundry")}}>
+              {/* <div onClick={()=>{navigate("/laundry")}}>
                 <button className="themeButtonContainer" >
                   <Stars className="iconTheme" />
                 </button>
                 Stargazing
-              </div>  
+              </div>   */}
               <div onClick={()=>{navigate("/trip")}}>
                 <button className="themeButtonContainer" >
                   <TripIcon className="iconTheme" />
